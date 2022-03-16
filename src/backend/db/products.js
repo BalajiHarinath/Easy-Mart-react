@@ -3,7 +3,7 @@ import { NikeCourtSkateboarding, NikeMagnifyNitroRunning, NikeSoftrideRiftShoes,
   PumaFlexControlTraining, PumaSoftRideRiftTech, PumaZodRunnerSneakers, PumaZetaRunningShoes,
   RaybanAviatorClassic, RaybanJack, RaybanRoundMetal, RaybanOrion,
   JohnjacobsClubMasterClassic, JohnjacobsRoundAbout, JohnjacobsRoundMetal, JohnjacobsStateStreet,
-  NikeBlackOriginal, NikeWhiteSports, NikeWhiteClub, NikeWhiteRunner } from "../../Assets/Images/index";
+  NikeBlackOriginal, NikeWhiteSports, NikeWhiteClub, NikeWhiteRunner } from "../../Assets/Images";
 
 /**
  * Product Database can be added here.

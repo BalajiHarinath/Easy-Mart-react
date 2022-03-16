@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { category1, category2, category3 } from "../../Assets/Images/index";
+import { category1, category2, category3 } from "../../Assets/Images";
 /**
  * Category Database can be added here.
  * You can add category of your wish with different attributes

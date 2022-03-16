@@ -2,8 +2,8 @@ import "./App.css";
 import "./css/main.css";
 
 import {  Switch, Route, Link, Routes} from 'react-router-dom';
-import { Nav, Footer } from "./Components/index";
-import  { Home } from "./Pages/index";
+import { Nav, Footer } from "./Components";
+import  { Home } from "./Pages";
 import { CategoryProvider } from "./Context/CategoriesContext";
 
 function App() {
