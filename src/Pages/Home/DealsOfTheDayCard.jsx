@@ -3,7 +3,6 @@ import "./Home.css";
 
 export const DealsOfTheDayCard = ({productData}) => {
     const dealsOfTheDayData = productData.filter(item => item.includeInDealsOfTheDay)
-    console.log(dealsOfTheDayData)
     return(
             <div className="flex flex-wrap flex-justify-center flex-align-center flex-gap-2">
                   {
