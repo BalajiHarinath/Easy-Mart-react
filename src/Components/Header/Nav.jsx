@@ -33,10 +33,10 @@ export const Nav = () => {
 
                 <ul className="list-style-none flex flex-gap-1">
                   {
-                    navLinks.map((item) => {
+                    navLinks.map(({ text, link }) => {
                       return(
-                        <li key={item.text}>
-                          <Link className="nav-links font-semibold ml-2 nav-home display-desktop" to={item.link}>{item.text}</Link>
+                        <li key={text}>
+                          <Link className="nav-links font-semibold ml-2 nav-home display-desktop" to={link}>{text}</Link>
                         </li>
                       )
                     })

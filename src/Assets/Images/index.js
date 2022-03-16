@@ -1,35 +1,28 @@
-import category1 from "./Categories/home-page-category-shirt.jpg";
-import category2 from "./Categories/home-page-category-shoes.jpg";
-import category3 from "./Categories/home-page-category-sunglasses.jpg";
-import brand1 from "./Brands/home-page-brand-nike.jpg";
-import brand2 from "./Brands/home-page-brand-adidas.jpg";
-import brand3 from "./Brands/home-page-brand-puma.jpg";
-import brand4 from "./Brands/home-page-brand-rayban.jpg";
-import brand5 from "./Brands/home-page-brand-johnjacobs.jpg";
-import NikeCourtSkateboarding from "./Products/Shoes/Nike/Nike-Court-Skateboarding.jpg";
-import NikeMagnifyNitroRunning from "./Products/Shoes/Nike/Nike-Magnify-Nitro-Running.jpg";
-import NikeSoftrideRiftShoes from "./Products/Shoes/Nike/Nike-Softride-Rift-Shoes.jpg";
-import NikeQuestRunningShoes from "./Products/Shoes/Nike/Nike-Quest-Running-Shoes.jpg";
-import PumaFlexControlTraining from "./Products/Shoes/Puma/Puma-Flex-Control-Training.jpg";
-import PumaSoftRideRiftTech from "./Products/Shoes/Puma/Puma-Soft-Ride-Rift-Tech.jpg";
-import PumaZodRunnerSneakers from "./Products/Shoes/Puma/Puma-Zod-Runner-Sneakers.jpg";
-import PumaZetaRunningShoes from "./Products/Shoes/Puma/Puma-Zeta-Running-Shoes.jpg";
-import RaybanAviatorClassic from "./Products/sunglasses/rayban/Rayban-Aviator-Classic.jpg";
-import RaybanJack from "./Products/sunglasses/rayban/Rayban-Jack.jpg";
-import RaybanRoundMetal from "./Products/sunglasses/rayban/Rayban-Round-Metal.jpg";
-import RaybanOrion from "./Products/sunglasses/rayban/Rayban-Orion.jpg";
-import JohnjacobsClubMasterClassic from "./Products/sunglasses/johnjacobs/Johnjacobs-Club-Master-Classic.jpg";
-import JohnjacobsRoundAbout from "./Products/sunglasses/johnjacobs/Johnjacobs-Round-About.jpg";
-import JohnjacobsRoundMetal from "./Products/sunglasses/johnjacobs/Johnjacobs-Round-Metal.jpg";
-import JohnjacobsStateStreet from "./Products/sunglasses/johnjacobs/Johnjacobs-State-Street.jpg";
-import NikeBlackOriginal from "./Products/T-shirts/Nike/Nike-Black-Original.jpg";
-import NikeWhiteSports from "./Products/T-shirts/Nike/Nike-White-Club.jpg";
-import NikeWhiteClub from "./Products/T-shirts/Nike/Nike-White-Runner.jpg";
-import NikeWhiteRunner from "./Products/T-shirts/Nike/Nike-White-Sports.jpg";
-
-export { category1, category2, category3, brand1, brand2, brand3, brand4, brand5,
-    NikeCourtSkateboarding, NikeMagnifyNitroRunning, NikeSoftrideRiftShoes, NikeQuestRunningShoes,
-    PumaFlexControlTraining, PumaSoftRideRiftTech, PumaZodRunnerSneakers, PumaZetaRunningShoes,
-    RaybanAviatorClassic, RaybanJack, RaybanRoundMetal, RaybanOrion,
-    JohnjacobsClubMasterClassic, JohnjacobsRoundAbout, JohnjacobsRoundMetal, JohnjacobsStateStreet,
-    NikeBlackOriginal, NikeWhiteSports, NikeWhiteClub, NikeWhiteRunner };
+export { default as category1 } from "./Categories/home-page-category-shirt.jpg";
+export { default as category2 } from "./Categories/home-page-category-shoes.jpg";
+export { default as category3 } from "./Categories/home-page-category-sunglasses.jpg";
+export { default as brand1 } from "./Brands/home-page-brand-nike.jpg";
+export { default as brand2 } from "./Brands/home-page-brand-adidas.jpg";
+export { default as brand3 } from "./Brands/home-page-brand-puma.jpg";
+export { default as brand4 } from "./Brands/home-page-brand-rayban.jpg";
+export { default as brand5 } from "./Brands/home-page-brand-johnjacobs.jpg";
+export { default as NikeCourtSkateboarding } from "./Products/Shoes/Nike/Nike-Court-Skateboarding.jpg";
+export { default as NikeMagnifyNitroRunning } from "./Products/Shoes/Nike/Nike-Magnify-Nitro-Running.jpg";
+export { default as NikeSoftrideRiftShoes } from "./Products/Shoes/Nike/Nike-Softride-Rift-Shoes.jpg";
+export { default as NikeQuestRunningShoes } from "./Products/Shoes/Nike/Nike-Quest-Running-Shoes.jpg";
+export { default as PumaFlexControlTraining } from "./Products/Shoes/Puma/Puma-Flex-Control-Training.jpg";
+export { default as PumaSoftRideRiftTech } from "./Products/Shoes/Puma/Puma-Soft-Ride-Rift-Tech.jpg";
+export { default as PumaZodRunnerSneakers } from "./Products/Shoes/Puma/Puma-Zod-Runner-Sneakers.jpg";
+export { default as PumaZetaRunningShoes } from "./Products/Shoes/Puma/Puma-Zeta-Running-Shoes.jpg";
+export { default as RaybanAviatorClassic } from "./Products/sunglasses/rayban/Rayban-Aviator-Classic.jpg";
+export { default as RaybanJack } from "./Products/sunglasses/rayban/Rayban-Jack.jpg";
+export { default as RaybanRoundMetal } from "./Products/sunglasses/rayban/Rayban-Round-Metal.jpg";
+export { default as RaybanOrion } from "./Products/sunglasses/rayban/Rayban-Orion.jpg";
+export { default as JohnjacobsClubMasterClassic } from "./Products/sunglasses/johnjacobs/Johnjacobs-Club-Master-Classic.jpg";
+export { default as JohnjacobsRoundAbout } from "./Products/sunglasses/johnjacobs/Johnjacobs-Round-About.jpg";
+export { default as JohnjacobsRoundMetal } from "./Products/sunglasses/johnjacobs/Johnjacobs-Round-Metal.jpg";
+export { default as JohnjacobsStateStreet } from "./Products/sunglasses/johnjacobs/Johnjacobs-State-Street.jpg";
+export { default as NikeBlackOriginal } from "./Products/T-shirts/Nike/Nike-Black-Original.jpg";
+export { default as NikeWhiteSports } from "./Products/T-shirts/Nike/Nike-White-Club.jpg";
+export { default as NikeWhiteClub } from "./Products/T-shirts/Nike/Nike-White-Runner.jpg";
+export { default as NikeWhiteRunner } from "./Products/T-shirts/Nike/Nike-White-Sports.jpg";

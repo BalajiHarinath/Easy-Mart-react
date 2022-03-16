@@ -7,7 +7,7 @@ export const DealsOfTheDayCard = ({productData}) => {
             <div className="flex flex-wrap flex-justify-center flex-align-center flex-gap-2">
                   {
                     dealsOfTheDayData.map((item,index) => {
-                      const { cardBadge, image:{ src, alt }, company, product, rating, numberOfReviews, price, priceStrike } = item; 
+                      const { cardBadge, image:{ src, alt }, brand, product, rating, numberOfReviews, price, priceStrike } = item; 
                       return (
                           <div className="card-product flex flex-column mb-4 mr-2" key={index}>
                               <div className="container-img-product">
@@ -15,7 +15,7 @@ export const DealsOfTheDayCard = ({productData}) => {
                                   <img className="img-product" loading="lazy" src={src} alt={alt}/>
                               </div>
                               <div className="flex flex-column flex-gap-0-5">
-                                  <h3 className="dod-company pdl-1 mt-0-5">{company}</h3>
+                                  <h3 className="dod-company pdl-1 mt-0-5">{brand}</h3>
                                   <h2 className="dod-product pdl-1">{product}</h2>
                                   <div className="card-rating flex flex-align-center pdl-1">
                                       <div className="card-rating-stars">
