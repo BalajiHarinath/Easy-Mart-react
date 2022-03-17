@@ -1,0 +1,196 @@
+/*Main*/
+
+.main-home {
+    margin-top: calc(4.375rem + 0rem);
+}
+
+.image-home {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    grid-column: 1/-1;
+    grid-row-start: 1;
+    border-radius: 1rem;
+}
+
+.text-home {
+    top: 10rem;
+    left: 40vw;
+    color: var(--white);
+    grid-column: 2/4;
+    grid-row-start: 1;
+}
+
+.btn-home {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-home:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/*Category and brands*/
+.category-header {
+    color: var(--text-color1);
+}
+
+.container-categories, .container-brand {
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+}
+
+.container-categories:hover, .container-brand:hover {
+    transform: scale(1.05);
+}
+
+.container-overlay-categories, .container-overlay-brand {
+    width: 12rem;
+    height: 15rem;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.image-category, .image-brand {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+}
+
+.text-overlay-categories {
+    position: absolute;
+    width: 12rem;
+    height: 15rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: black;
+    border-radius: 1rem;
+    background-color: var(--background-color1);
+}
+
+/*Deals of the day*/
+
+.product-display {
+    grid-column: 2/-1;
+}
+
+.card-product {
+    width: 16rem;
+    height: 25rem;
+    box-shadow: var(--box-shadow1);
+    transition: all 0.1s ease;
+}
+
+.card-product:hover {
+    transform: scale(1.01);
+    box-shadow: var(--box-shadow);;
+}
+
+.container-img-product {
+    width: 16rem;
+    height: 16.875rem;
+}
+
+.card-badge {
+    position: absolute;
+}
+
+.img-product {
+    width: 100%;
+    height: 100%;
+}
+
+.dod-company, .dod-product{
+    font-size: 1rem;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.card-dod-discount-price {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.card-dod-reviews {
+    font-size: 0.7rem;
+}
+
+.cart-icon {
+    padding-right: 0.5rem;
+}
+
+.btn-product-cart, .btn-product-wishlist {
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-product-cart {
+    background-color: var(--primary-color);
+    color: var(--white); 
+}
+
+.btn-product-wishlist {
+    background-color: var(--fav-btn);
+    color: var(--white); 
+}
+
+/*Media-Queries*/
+
+@media screen and (max-width : 1210px) {
+
+    .card-dod-reviews, .card-dod-discount-price, .price-strike {
+        font-size: smaller;
+    }
+
+}
+
+@media screen and (max-width : 1160px) {
+
+    .main-home {
+        margin-top: calc(4.375rem + 2.5rem);
+    }
+
+}
+
+@media screen and (max-width : 1000px) {
+
+    :root{
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width : 850px) {
+
+    .product-display{
+        grid-column: 1/-1;
+        margin-right: 1rem;
+        margin-left: 1rem;
+        justify-content: space-evenly;
+    }
+
+    .card-product {
+        width: 15rem;
+        height: 22rem;
+    }
+
+    .container-img-product {
+        width: 15rem;
+        height: 14rem;
+    }
+
+}
+
+@media screen and (max-width : 640px) {
+
+    :root{
+        font-size: 12px;
+    }
+
+}

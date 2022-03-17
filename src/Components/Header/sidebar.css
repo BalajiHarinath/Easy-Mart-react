@@ -1,0 +1,34 @@
+.container-sidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40vw;
+    max-width: 18.75rem;
+    height: 100vh;
+    z-index: 5;
+    background-color: var(--secondary-color);
+    box-shadow: var(--box-shadow);
+}
+
+.btn-sidebar-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+}
+
+.btn-sidebar-close:hover {
+    color: var(--primary-color);
+}
+
+.sidebar-item {
+    color: var(--text-color1);
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.sidebar-item:hover {
+    background-color: var(--background-color-hover);
+    cursor: pointer;
+    color: var(--primary-color);
+}

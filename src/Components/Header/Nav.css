@@ -1,0 +1,146 @@
+/*Navbar*/
+
+.navbar {
+    background-color: var(--secondary-color);
+    box-shadow: var(--box-shadow);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.title {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    color: var(--text-color1);
+}
+
+.nav-home{
+    color: var(--primary-color);
+}
+
+.btn-searchbar{
+    background-color: var(--white);
+    border: 1px solid var(--border-color1);
+    border-right: none;
+    padding: 0rem 1rem;
+}
+
+.input-searchbar {
+    border: 1px solid var(--border-color1);
+    border-left: none;
+    width: 35rem;
+    padding: 0.625rem 1.25rem;
+    outline: none;
+}
+
+.container-badge{
+    position: relative;
+    box-sizing: border-box;
+}
+
+.nav-profile {
+    height: 1.75rem;
+}
+
+.status-badge {
+    height: 1.25rem;
+    min-width: 1.25rem;
+    padding: 2px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    display: flex;
+    color: var(--white);
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: .75em;
+    box-sizing: border-box;
+}
+
+.status-badge-number {
+    background-color: var(--primary-color);
+    border: none;
+    right: -1rem;
+    top: -0.7rem;
+}
+
+.icon-theme {
+    color: var(--text-color1);
+}
+
+.searchbar-small-screen {
+    display: none;
+}
+
+.display-small-screen {
+    display: none;
+}
+
+@media screen and (max-width : 1350px) {
+
+    .display-small-screen {
+        display: block;
+    }
+
+    .display-desktop{
+        display: none;
+    }
+}
+
+@media screen and (max-width : 1210px) {
+    
+    .btn-icon-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.2rem;
+        height: 2rem;
+        font-size: smaller;
+    }
+}
+
+@media screen and (max-width : 1160px) {
+
+    .navbar {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .nav-icons {
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .searchbar {
+        display: none;
+    }
+
+    .searchbar-small-screen {
+        display: flex;
+        z-index: 1;
+        position: fixed;
+        top: 4.4rem;
+        width: 100%;
+        border: none;
+    }
+}
+
+@media screen and (max-width : 1000px) {
+
+    :root{
+        font-size: 14px;
+    }
+
+    .btn-icon-text{
+        padding: 1rem; 
+    }
+}
+
+@media screen and (max-width : 640px) {
+    :root{
+        font-size: 12px;
+    }
+}
