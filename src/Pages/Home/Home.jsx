@@ -45,6 +45,7 @@ export const Home = () => {
                     {brandStatus==="error" && <div>{brandData}</div>}
             </div>
 
+            <div className="spacer-5"></div>
              {/* <!--Deals of the day--> */}
             <div className="flex flex-column flex-gap-2 flex-wrap">
                 <h3 className="flex flex-justify-center category-header">Deals of the day</h3>
