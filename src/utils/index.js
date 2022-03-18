@@ -1,3 +1,2 @@
-export { BrandReducer } from "./Reducers/BrandReducer";
-export { CategoriesReducer } from "./Reducers/CategoriesReducer";
+export { SharedReducer } from "./Reducers/SharedReducer";
 export { ProductReducer } from "./Reducers/ProductReducer";

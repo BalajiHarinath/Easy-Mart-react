@@ -1,32 +1,18 @@
-import axios from "axios";
-import { createContext, useContext, useReducer, useEffect } from "react";
-import { BrandReducer } from "../utils";
+import { createContext, useContext } from "react";
+import { API_TO_GET_BRANDS } from "../utils/Constants/api";
+import { useGetData } from "../utils/CustomHooks/GetData";
 
-const initialBrandData = {
+const BrandContext = createContext({
     brandStatus: "loading",
-    brandData: null
-}
-
-const BrandContext = createContext();
+    brandData: null,
+    brandDispatch: () => {}
+});
 
 const BrandProvider = ({children}) => {
-
-    const[brands,brandDispatch] = useReducer(BrandReducer,initialBrandData)
-
-    useEffect(() => {
-        (async () => {
-            brandDispatch({type:"ACTION_TYPE_LOADING"})
-            try{
-                const response = await axios.get("api/brands")
-                brandDispatch({type:"ACTION_TYPE_SUCCESS", payload:response.data.brands})
-            }catch{
-                brandDispatch({type:"ACTION_TYPE_ERROR", payload:"Error in loading the brands data"})
-            }
-        })()
-    },[])
-
+    const { sharedData: brands, sharedDispatch: brandDispatch } = useGetData(API_TO_GET_BRANDS);
+    const { status: brandStatus, data: brandData } = brands;
     return(
-        <BrandContext.Provider value={{brands,brandDispatch}}>
+        <BrandContext.Provider value={{brandStatus, brandData, brandDispatch}}>
             {children}
         </BrandContext.Provider>
     )

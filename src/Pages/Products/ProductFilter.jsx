@@ -4,10 +4,8 @@ import { useCategory, useBrand, useProducts } from "../../Context";
 
 export const ProductFilter = ({showFilterSmallScreen, setShowFilterSmallScreen}) => {
     
-    const { categories } = useCategory();
-    const { categoryData } = categories;
-    const { brands } = useBrand();
-    const { brandData } = brands;
+    const { categoryData  } = useCategory();
+    const { brandData } = useBrand();
     const { products, productsDispatch} = useProducts();
 
     return(

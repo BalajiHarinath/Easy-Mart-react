@@ -6,10 +6,8 @@ import { CategoryCard, BrandCard, DealsOfTheDayCard } from "./index";
 import { Link } from "react-router-dom";
 
 export const Home = () => {
-    const { categories} = useCategory();
-    const { categoryStatus, categoryData  } = categories;
-    const { brands } = useBrand();
-    const { brandStatus, brandData } = brands;
+    const { categoryStatus, categoryData } = useCategory();
+    const { brandStatus, brandData } = useBrand();
     const { products } = useProducts();
     const { productStatus, productData } = products;
    
@@ -38,7 +36,7 @@ export const Home = () => {
             <div className="spacer-5"></div>
 
             {/* {brands} */}
-            <div class="flex flex-column flex-gap-2">
+            <div className="flex flex-column flex-gap-2">
                 <h3 className="flex flex-justify-center category-header">Featured Brands</h3>               
                     {brandStatus==="loading" && <div>Loading...</div>}
                     {brandStatus==="success" && <BrandCard brandData={brandData} />}

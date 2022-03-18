@@ -1,40 +1,21 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
-import axios from "axios";
-import { CategoriesReducer } from "../utils";
-
-const initialCategoryData = {
-    categoryStatus : "loading",
-    categoryData : null,
-}
+import { createContext, useContext } from "react";
+import { API_TO_GET_CATEGORIES } from "../utils/Constants/api";
+import { useGetData } from "../utils/CustomHooks/GetData";
 
 const CategoryContext = createContext({
-    categories : initialCategoryData,
+    categoryStatus : "loading",
+    categoryData : null,
     categoriesDispatch : ()=>{}
 });
 
 const CategoryProvider = ({children}) => {
-
-    const [categories, categoriesDispatch] = useReducer(CategoriesReducer,initialCategoryData);
-
-    useEffect(() => {
-        (async () => {
-            categoriesDispatch({type: "ACTION_TYPE_LOADING"})
-            try{
-                const response = await axios.get("/api/categories");
-                categoriesDispatch({ type: "ACTION_TYPE_SUCCESS", payload: response.data.categories })
-            }
-            catch{
-                categoriesDispatch({type: "ACTION_TYPE_ERROR, payload", payload: "Error in fetching the category data"})
-            }
-        })()
-    },[])
-
+    const { sharedData: categories, sharedDispatch: categoriesDispatch } = useGetData(API_TO_GET_CATEGORIES);
+    const { status: categoryStatus, data: categoryData } = categories;
     return(
-        <CategoryContext.Provider value={{categories, categoriesDispatch}}>
+        <CategoryContext.Provider value={{categoryStatus, categoryData, categoriesDispatch}}>
             {children}
         </CategoryContext.Provider>
     )
- 
 }
 
 const useCategory = () => useContext(CategoryContext);
