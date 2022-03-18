@@ -1,15 +1,15 @@
 import "../../css/main.css";
 import "./Home.css";
 import homeImage from "../../Assets/Images/home-image.jpg";
-import { useCategory } from "../../Context/CategoriesContext";
-import { useProducts } from "../../Context/ProductsContext";
-import { CategoryCard } from "./CategoryCard";
-import { DealsOfTheDayCard } from "./DealsOfTheDayCard";
+import { useCategory, useBrand, useProducts } from "../../Context";
+import { CategoryCard, BrandCard, DealsOfTheDayCard } from "./index";
 import { Link } from "react-router-dom";
 
 export const Home = () => {
     const { categories} = useCategory();
     const { categoryStatus, categoryData  } = categories;
+    const { brands } = useBrand();
+    const { brandStatus, brandData } = brands;
     const { products } = useProducts();
     const { productStatus, productData } = products;
    
@@ -36,6 +36,15 @@ export const Home = () => {
             </div> 
 
             <div className="spacer-5"></div>
+
+            {/* {brands} */}
+            <div class="flex flex-column flex-gap-2">
+                <h3 className="flex flex-justify-center category-header">Featured Brands</h3>               
+                    {brandStatus==="loading" && <div>Loading...</div>}
+                    {brandStatus==="success" && <BrandCard brandData={brandData} />}
+                    {brandStatus==="error" && <div>{brandData}</div>}
+            </div>
+
              {/* <!--Deals of the day--> */}
             <div className="flex flex-column flex-gap-2 flex-wrap">
                 <h3 className="flex flex-justify-center category-header">Deals of the day</h3>

@@ -1,11 +1,19 @@
 import axios from "axios";
 import { createContext, useContext, useReducer, useEffect } from "react";
-import { ProductReducer } from "../utils/Reducers/ProductReducer";
-import { ACTION_TYPE_LOADING, ACTION_TYPE_SUCCESS, ACTION_TYPE_ERROR } from "../utils/actionTypes";
+import { ProductReducer } from "../utils";
 
 const initialProductData = {
     productStatus: "loading",
-    productData: null
+    productData: [],
+    sortBy: "",
+    wishlistData: [],
+    cartData: [],
+    filterData : {
+        filterByCategory: [],
+        filterByBrand: [],
+        filterByRating: 0,
+        outOfStock: true,
+    }
 }
 
 const ProductContext = createContext({
@@ -20,13 +28,13 @@ const ProductProvider = ({children}) => {
     useEffect(() => {
         
         (async() => {
-            productsDispatch({type: ACTION_TYPE_LOADING})
+            productsDispatch({type: "ACTION_TYPE_LOADING"})
             try{         
                 const response = await axios.get("/api/products");
-                productsDispatch({type: ACTION_TYPE_SUCCESS, payload: response.data.products})
+                productsDispatch({type: "ACTION_TYPE_SUCCESS", payload: response.data.products})
             }
             catch{
-            productsDispatch({type: ACTION_TYPE_ERROR, payload:"Error in fetching the product data"})
+            productsDispatch({type: "ACTION_TYPE_ERROR", payload:"Error in fetching the product data"})
             }
         })()
         
