@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { API_TO_GET_CATEGORIES } from "../utils/Constants/api";
-import { useGetData } from "../utils/CustomHooks/GetData";
+import { useGetData } from "../utils";
 
 const CategoryContext = createContext({
     categoryStatus : "loading",

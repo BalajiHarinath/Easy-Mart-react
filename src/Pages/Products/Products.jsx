@@ -3,8 +3,10 @@ import "./Products.css";
 import { ProductFilter, ProductItemCard, getSortedItems, getFilteredItems } from "./index";
 import { useProducts } from "../../Context";
 import { useState } from "react";
+import { useScrollToTop } from "../../utils";
 
 export const Products = () => {
+    useScrollToTop();
     const [showFilterSmallScreen, setShowFilterSmallScreen] = useState(false);
     const { products } = useProducts();
     const { productStatus, productData, sortBy, filterData} = products;

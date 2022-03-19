@@ -1,0 +1,15 @@
+.circle-rotate{
+    margin: 5rem auto;
+    width: 4rem;
+    height: 4rem;
+    border: 5px solid var(--primary-color);
+    border-radius: 50%;
+    border-top-color: var(--secondary-color);
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    100%{
+        transform: rotate(360deg);
+    }
+}

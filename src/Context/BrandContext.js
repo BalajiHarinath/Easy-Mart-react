@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { API_TO_GET_BRANDS } from "../utils/Constants/api";
-import { useGetData } from "../utils/CustomHooks/GetData";
+import { useGetData } from "../utils";
 
 const BrandContext = createContext({
     brandStatus: "loading",

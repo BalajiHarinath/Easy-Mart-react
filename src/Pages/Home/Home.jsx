@@ -4,6 +4,7 @@ import homeImage from "../../Assets/Images/home-image.jpg";
 import { useCategory, useBrand, useProducts } from "../../Context";
 import { CategoryCard, BrandCard, DealsOfTheDayCard } from "./index";
 import { Link } from "react-router-dom";
+import { Loader } from "../../Components";
 
 export const Home = () => {
     const { categoryStatus, categoryData } = useCategory();
@@ -28,7 +29,7 @@ export const Home = () => {
             {/* {categories} */}
             <div className="flex flex-column flex-gap-2">
                 <h3 className="flex flex-justify-center category-header">Featured Categories</h3>              
-                  {categoryStatus==="loading" && <div>Loading...</div>}
+                  {categoryStatus==="loading" && <Loader />}
                   {categoryStatus==="success" && <CategoryCard categoryData={categoryData} />}
                   {categoryStatus==="error" && <div>{categoryData}</div>}
             </div> 
@@ -38,7 +39,7 @@ export const Home = () => {
             {/* {brands} */}
             <div className="flex flex-column flex-gap-2">
                 <h3 className="flex flex-justify-center category-header">Featured Brands</h3>               
-                    {brandStatus==="loading" && <div>Loading...</div>}
+                    {brandStatus==="loading" && <Loader />}
                     {brandStatus==="success" && <BrandCard brandData={brandData} />}
                     {brandStatus==="error" && <div>{brandData}</div>}
             </div>
@@ -47,7 +48,7 @@ export const Home = () => {
              {/* <!--Deals of the day--> */}
             <div className="flex flex-column flex-gap-2 flex-wrap">
                 <h3 className="flex flex-justify-center category-header">Deals of the day</h3>
-                { productStatus==="loading" && <div>Loading...</div>}
+                { productStatus==="loading" && <Loader />}
                 { productStatus==="success" && <DealsOfTheDayCard productData={productData}/>} 
                 { productStatus==="error" && <div>{productData}</div>}              
 
