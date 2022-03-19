@@ -28,8 +28,8 @@ export const DealsOfTheDayCard = ({productData}) => {
                                        </div>
                                    </div>
                                    <div className="card-price flex-gap-0-5 pdl-1">
-                                       <p className="card-dod-discount-price">{price}</p>
-                                       <p className="price-strike">{priceStrike}</p>
+                                       <p className="card-dod-discount-price">Rs. {price}/-</p>
+                                       <p className="price-strike">Rs. {priceStrike}/-</p>
                                    </div>
                                    <div className="flex flex-column">
                                        <button className="btn-product-cart text-base flex flex-justify-center">

@@ -156,6 +156,11 @@ a {
 .text-align-center {
     text-align: center;
 }
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
 /*Positions*/
 
 .position-relative {
@@ -179,6 +184,10 @@ a {
 .btn-transparent {
     background: transparent;
     border: transparent;
+    cursor: pointer;
+}
+
+.cursor-pointer {
     cursor: pointer;
 }
 

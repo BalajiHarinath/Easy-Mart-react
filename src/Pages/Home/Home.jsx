@@ -1,15 +1,14 @@
 import "../../css/main.css";
 import "./Home.css";
 import homeImage from "../../Assets/Images/home-image.jpg";
-import { useCategory } from "../../Context/CategoriesContext";
-import { useProducts } from "../../Context/ProductsContext";
-import { CategoryCard } from "./CategoryCard";
-import { DealsOfTheDayCard } from "./DealsOfTheDayCard";
+import { useCategory, useBrand, useProducts } from "../../Context";
+import { CategoryCard, BrandCard, DealsOfTheDayCard } from "./index";
 import { Link } from "react-router-dom";
+import { Loader } from "../../Components";
 
 export const Home = () => {
-    const { categories} = useCategory();
-    const { categoryStatus, categoryData  } = categories;
+    const { categoryStatus, categoryData } = useCategory();
+    const { brandStatus, brandData } = useBrand();
     const { products } = useProducts();
     const { productStatus, productData } = products;
    
@@ -30,16 +29,26 @@ export const Home = () => {
             {/* {categories} */}
             <div className="flex flex-column flex-gap-2">
                 <h3 className="flex flex-justify-center category-header">Featured Categories</h3>              
-                  {categoryStatus==="loading" && <div>Loading...</div>}
+                  {categoryStatus==="loading" && <Loader />}
                   {categoryStatus==="success" && <CategoryCard categoryData={categoryData} />}
                   {categoryStatus==="error" && <div>{categoryData}</div>}
             </div> 
 
             <div className="spacer-5"></div>
+
+            {/* {brands} */}
+            <div className="flex flex-column flex-gap-2">
+                <h3 className="flex flex-justify-center category-header">Featured Brands</h3>               
+                    {brandStatus==="loading" && <Loader />}
+                    {brandStatus==="success" && <BrandCard brandData={brandData} />}
+                    {brandStatus==="error" && <div>{brandData}</div>}
+            </div>
+
+            <div className="spacer-5"></div>
              {/* <!--Deals of the day--> */}
             <div className="flex flex-column flex-gap-2 flex-wrap">
                 <h3 className="flex flex-justify-center category-header">Deals of the day</h3>
-                { productStatus==="loading" && <div>Loading...</div>}
+                { productStatus==="loading" && <Loader />}
                 { productStatus==="success" && <DealsOfTheDayCard productData={productData}/>} 
                 { productStatus==="error" && <div>{productData}</div>}              
 
