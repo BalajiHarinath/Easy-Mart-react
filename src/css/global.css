@@ -22,6 +22,8 @@
     --btn-light-hover-bg : #ffffff;
 
     --yellow : #eed70d;
+    --red: #eb1d1d;
+    --green: #12be12;
     --white : #FFFF;
     --black : #0000;
 }
@@ -227,3 +229,6 @@ a {
     height: 5rem;
 }
 
+.display-none {
+    display: none;
+}

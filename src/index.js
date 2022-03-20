@@ -6,18 +6,20 @@ import { BrowserRouter as Router } from "react-router-dom";
 // import reportWebVitals from './reportWebVitals';
 
 import { makeServer } from "./server";
-import { ProductProvider } from "./Context/ProductsContext";
+import { AuthProvider, ProductProvider } from "./Context";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <AuthProvider>
+      <Router>
         <ProductProvider>
            <App /> 
-        </ProductProvider>       
-    </Router>
+        </ProductProvider>   
+      </Router> 
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

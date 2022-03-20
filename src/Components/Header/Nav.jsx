@@ -1,15 +1,14 @@
 
 import "../../css/main.css";
 import "./Nav.css";
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { Sidebar }  from "./sidebar";
-
+import { useAuth } from "../../Context";
 
 export const Nav = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const {authState: { loggedIn, userName }, logout } = useAuth();
 
   const hamburgerHandler = () => {
     setShowSidebar(!showSidebar);
@@ -52,10 +51,10 @@ export const Nav = () => {
             <ul className="nav-icons flex flex-justify-center flex-gap-2 list-style-none">
                 
                 <li className="flex flex-column flex-justify-center flex-align-center">
-                    <a className="flex flex-column" href="./Pages/signup-login/signup.html">
+                    <Link className="flex flex-column" to="/login">
                         <span className="material-icons text-2xl nav-links nav-profile">account_circle</span>
-                    </a>
-                    <span className="text-xs">Profile</span>
+                    </Link>
+                    <span className="text-xs text-capitalize">{userName}</span>
                 </li>
 
                 <li className="flex flex-column flex-justify-center flex-align-center">
@@ -83,6 +82,13 @@ export const Nav = () => {
                         <span className="material-icons icon-theme text-3xl">dark_mode</span>
                         {/* <span class="material-icons icon-theme text-3xl">{theme ? "dark_mode" : "light_mode"}</span> */}
                     </button>
+                </li>
+
+                <li className={`${loggedIn ? "flex flex-column flex-justify-center flex-align-center" : "display-none" }`}>
+                    <Link className="flex flex-column" to="/login">
+                        <span className="material-icons text-2xl nav-links nav-profile" onClick={()=> logout()}>logout</span>
+                    </Link>
+                    <span className="text-xs">LogOut</span>
                 </li>
            
             </ul>

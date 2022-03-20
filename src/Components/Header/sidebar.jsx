@@ -8,7 +8,7 @@ const Sidebar = ({showSidebar, setShowSidebar}) => {
     }
     return(
         <aside className = "container-sidebar pd-1">
-            <button className="btn-sidebar-close btn-transparent text-3xl" onClick={sideBarCloseBtn}><span class="material-icons">close</span></button>
+            <button className="btn-sidebar-close btn-transparent text-3xl" onClick={sideBarCloseBtn}><span className="material-icons">close</span></button>
             <ul className="list-style-none flex flex-column flex-gap-1 text-lg pd-2">
                 {
                     sidebarData.map((item,index) => {

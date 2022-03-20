@@ -6,8 +6,6 @@ const initialProductData = {
     productStatus: "loading",
     productData: [],
     sortBy: "",
-    wishlistData: [],
-    cartData: [],
     filterData : {
         filterByCategory: [],
         filterByBrand: [],
