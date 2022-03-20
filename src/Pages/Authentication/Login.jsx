@@ -20,16 +20,11 @@ export const Login = () => {
 
     const submitHandler = () => {
 
-        const passwordValidation = /^(?=.*\d)(?=.*[a-z]).{5,10}$/;
-
         if(!userDetails.email || !userDetails.password){
             setError({isError: true, text: "Please enter all the fields"})
         }
         else if(!userDetails.email.includes("@")){
             setError({isError: true, text: "Invalid email ID"})
-        }
-        else if(!userDetails.password.match(passwordValidation)){
-            setError({isError: true, text: "The password must be alphanumberic and atleast 5 characters long"})
         }
         else{
             login(userDetails);

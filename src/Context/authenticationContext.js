@@ -57,7 +57,6 @@ const AuthProvider = ({children}) => {
                 email: "testlogin@gmail.com",
                 password: "test123"
             })
-            console.log(response.data.foundUser.firstName)
             localStorage.setItem("token", response.data.encodedToken)
             authDispatch({type: "TEST_LOGIN", payload: {name:response.data.foundUser.firstName, toastMessage:"Logged in", id:response.data.foundUser._id} })
         }catch(error){
