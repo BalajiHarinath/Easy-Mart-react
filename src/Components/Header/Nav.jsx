@@ -8,7 +8,7 @@ import { useAuth } from "../../Context";
 
 export const Nav = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const {authState: { loggedIn, userName }, logout } = useAuth();
+  const {authState: { loggedIn, userName, wishlist, cart }, logout } = useAuth();
 
   const hamburgerHandler = () => {
     setShowSidebar(!showSidebar);
@@ -61,7 +61,7 @@ export const Nav = () => {
                     <Link className="flex flex-column" to="/wishlist">
                         <span className="container-badge">
                             <span className="material-icons text-2xl nav-links nav-wishlist">favorite</span>
-                            <span className="status-badge status-badge-number">2</span>
+                            <span className={`${wishlist.length>0 ? "status-badge status-badge-number" : "display-none"}`}>{wishlist.length}</span>
                         </span>
                     </Link>
                     <span className="text-xs">Wishlist</span> 
@@ -71,17 +71,10 @@ export const Nav = () => {
                     <Link className="flex flex-column" to="/cart">
                         <span className="container-badge">
                             <span className="material-icons text-2xl nav-links nav-cart">shopping_cart</span>
-                            <span className="status-badge status-badge-number">1</span>
+                            <span className={`${cart.length>0 ? "status-badge status-badge-number" : "display-none"}`}>{cart.length}</span>
                         </span>
                     </Link>    
                     <span className="text-xs">Cart</span>
-                </li>
-
-                <li className="flex flex-column flex-justify-center flex-align-center">
-                    <button className="btn-transparent">
-                        <span className="material-icons icon-theme text-3xl">dark_mode</span>
-                        {/* <span class="material-icons icon-theme text-3xl">{theme ? "dark_mode" : "light_mode"}</span> */}
-                    </button>
                 </li>
 
                 <li className={`${loggedIn ? "flex flex-column flex-justify-center flex-align-center" : "display-none" }`}>
@@ -89,6 +82,13 @@ export const Nav = () => {
                         <span className="material-icons text-2xl nav-links nav-profile" onClick={()=> logout()}>logout</span>
                     </Link>
                     <span className="text-xs">LogOut</span>
+                </li>
+
+                <li className="flex flex-column flex-justify-center flex-align-center">
+                    <button className="btn-transparent">
+                        <span className="material-icons icon-theme text-3xl">dark_mode</span>
+                        {/* <span class="material-icons icon-theme text-3xl">{theme ? "dark_mode" : "light_mode"}</span> */}
+                    </button>
                 </li>
            
             </ul>

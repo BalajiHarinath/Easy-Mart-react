@@ -12,7 +12,7 @@ export const Login = () => {
     const { login, testLogin } = useAuth();
     useEffect(() => {
         const timeoutId = setTimeout(() => {
-            setError({...error, isError: false})
+            setError({text:"", isError: false})
         }, 3000);
 
         return () => clearTimeout(timeoutId);
@@ -32,10 +32,12 @@ export const Login = () => {
         }
 
     }
+    // console.log(error)
 
     return(
         <main className="main-login flex flex-justify-center flex-align-center mt-4 mb-4">
         <div className="form-login">
+            {/* {console.log(error)} */}
             {error.isError ? <p className="text-alert pdt-1">{error.text}</p> : null}
             <div className="flex flex-column flex-gap-1-5 mt-2 mr-4 mb-2 ml-4">
                 <h3>Login</h3>

@@ -6,7 +6,7 @@ import { useAuth } from "../../Context";
 
 
 export const SignUp = () => {
-    const { signup, login } = useAuth();
+    const { authState, signup } = useAuth();
 
     const [userDetails, setUserDetails] = useState({
         firstName: "",
@@ -50,6 +50,9 @@ export const SignUp = () => {
         }
         else{
             signup(userDetails);
+            if(authState.isError){
+                setError({isError: true, text: authState.errorMessage})
+            }
             setUserDetails({
                 firstName: "",
                 lastName: "",

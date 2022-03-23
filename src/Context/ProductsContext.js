@@ -11,7 +11,9 @@ const initialProductData = {
         filterByBrand: [],
         filterByRating: 0,
         outOfStock: true,
-    }
+    },
+    inWishlist: false,
+    inCart: false,
 }
 
 const ProductContext = createContext({
