@@ -5,8 +5,11 @@ import { getTotalMRP, getDiscountAmount, getTotalAmount, getCartQuantity } from 
 
 export const CartDetails = () => {
     const { authState: { cart }} = useAuth();
+    let deliveryFee = 200
 
-    const deliveryFee = 200;
+    if(cart.length===0) {
+        deliveryFee = 0;
+    }
 
     const totalMRP = getTotalMRP(cart);
     const discount = getDiscountAmount(cart);
