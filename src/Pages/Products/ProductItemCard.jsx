@@ -36,12 +36,12 @@ export const ProductItemCard = ({item}) => {
                     {
                         !loggedIn ?
                             <>
-                                <Link className={`${outOfStock ? "disabled" : ""} btn-product-cart text-base flex flex-justify-center`} to="/login">
+                                <Link className="btn-product-cart text-base flex flex-justify-center" to="/login">
                                     <span className="material-icons text-lg pdr-0-5">shopping_cart</span>
                                     Add to Cart
                                 </Link>
                                     
-                                <Link className={`${outOfStock ? "disabled" : ""} btn-product-wishlist text-base`} to="/login">
+                                <Link className="btn-product-wishlist text-base" to="/login">
                                     Add to Wishlist
                                 </Link> 
                             </>
@@ -50,11 +50,11 @@ export const ProductItemCard = ({item}) => {
                                 {
                                     (cart.length !==0 && cart.some((cartItem) => cartItem._id === _id)) 
                                         ? 
-                                            <Link className={`${outOfStock ? "disabled" : ""} btn-product-cart text-base flex flex-justify-center`}
+                                            <Link className="btn-product-cart text-base flex flex-justify-center"
                                             to="/cart">
                                             <span className="material-icons text-lg pdr-0-5">shopping_cart</span>Go to Cart</Link>
                                         :
-                                            <button className={`${outOfStock ? "disabled" : ""} btn-product-cart text-base flex flex-justify-center`}
+                                            <button className="btn-product-cart text-base flex flex-justify-center"
                                                 onClick={() => {addToCart(item, "Added to cart")}}>
                                             <span className="material-icons text-lg pdr-0-5">shopping_cart</span>Add to Cart</button>
 
@@ -62,11 +62,11 @@ export const ProductItemCard = ({item}) => {
                                 {
                                     (wishlist.length !== 0 && wishlist.some((listItem) => listItem._id === _id)) 
                                         ? 
-                                            <Link className={`${outOfStock ? "disabled" : ""} btn-product-wishlist text-base`}
+                                            <Link className="btn-product-wishlist text-base"
                                                 to="/wishlist">
                                                 Go to Wishlist</Link> 
                                         :
-                                            <button className={`${outOfStock ? "disabled" : ""} btn-product-wishlist text-base`}
+                                            <button className="btn-product-wishlist text-base"
                                             onClick={()=>addToWishlist(item, "Added to wishlist")}>
                                                 Add to Wishlist</button>
                                 }                   

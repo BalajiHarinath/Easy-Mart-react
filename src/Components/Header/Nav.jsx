@@ -61,7 +61,7 @@ export const Nav = () => {
                     <Link className="flex flex-column" to="/wishlist">
                         <span className="container-badge">
                             <span className="material-icons text-2xl nav-links nav-wishlist">favorite</span>
-                            <span className={`${wishlist.length>0 ? "status-badge status-badge-number" : "display-none"}`}>{wishlist.length}</span>
+                            {wishlist.length>0 && <span className="status-badge status-badge-number">{wishlist.length}</span>}
                         </span>
                     </Link>
                     <span className="text-xs">Wishlist</span> 
@@ -71,7 +71,7 @@ export const Nav = () => {
                     <Link className="flex flex-column" to="/cart">
                         <span className="container-badge">
                             <span className="material-icons text-2xl nav-links nav-cart">shopping_cart</span>
-                            <span className={`${cart.length>0 ? "status-badge status-badge-number" : "display-none"}`}>{cart.length}</span>
+                            {cart.length>0 && <span className="status-badge status-badge-number">{cart.length}</span>}
                         </span>
                     </Link>    
                     <span className="text-xs">Cart</span>

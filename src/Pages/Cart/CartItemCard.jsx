@@ -21,7 +21,7 @@ export const CartItemCard = ({item}) => {
                 </div>
                 <div className="flex flex-gap-0-5 flex-justify-center flex-align-center">
                     <span className="text-sm">Quantity : </span>
-                    <button className="btn-transparent" onClick={() => {updateItemQuantity(_id, "decrement", "Cart updated")}}><span className="material-icons">remove_circle</span></button>
+                    <button className="btn-transparent" onClick={() => {updateItemQuantity(_id, "decrement", "Cart updated")}} disabled={qty===1}><span className="material-icons">remove_circle</span></button>
                     <span>{qty}</span>
                     <button className="btn-transparent" onClick={() => {updateItemQuantity(_id, "increment", "Cart updated")}}><span className="material-icons">add_circle</span></button>
                 </div>

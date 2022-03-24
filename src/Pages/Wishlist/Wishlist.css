@@ -10,8 +10,6 @@
 }
 
 .wishlist-card {
-    /* width: 16rem;
-    height: 25rem; */
     width: 14rem;
     height: 22rem;
     box-shadow: var(--box-shadow);
@@ -23,8 +21,6 @@
 }
 
 .container-img-wishlist {
-    /* width: 16rem;
-    height: 16.875rem;  */
     width: 14rem;
     height: 14rem;
 }
