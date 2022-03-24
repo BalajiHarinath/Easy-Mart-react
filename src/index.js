@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 // import reportWebVitals from './reportWebVitals';
 
 import { makeServer } from "./server";
-import { AuthProvider, ProductProvider } from "./Context";
+import { AuthProvider, ProductProvider, WishlistProvider, CartProvider } from "./Context";
 
 // Call make Server
 makeServer();
@@ -16,7 +16,11 @@ ReactDOM.render(
     <AuthProvider>
       <Router>
         <ProductProvider>
-           <App /> 
+          <CartProvider>  
+            <WishlistProvider>
+              <App />
+            </WishlistProvider>  
+          </CartProvider>   
         </ProductProvider>   
       </Router> 
     </AuthProvider>

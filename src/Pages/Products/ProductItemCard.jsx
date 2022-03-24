@@ -1,8 +1,14 @@
 import "../../css/main.css";
 import "./Products.css";
+import { Link } from "react-router-dom";
+import { useWishlist, useCart, useAuth } from "../../Context";
 
 export const ProductItemCard = ({item}) => {
-    const { cardBadge, image:{ src, alt }, brandName, product, rating, numberOfReviews, price, priceStrike, outOfStock } = item;  
+    const { _id, cardBadge, image:{ src, alt }, brandName, product, rating, numberOfReviews, price, priceStrike, outOfStock } = item;  
+    const { addToWishlist } = useWishlist();
+    const { addToCart } = useCart();
+    const { authState: { wishlist, cart, loggedIn } } = useAuth();
+
     return(
         <div className={`${ outOfStock ? "card-product-outofstock" : "card-product"} flex flex-column mb-4 mr-2`}>
             <div className="container-img-product">
@@ -27,10 +33,47 @@ export const ProductItemCard = ({item}) => {
                     <p className="price-strike">Rs. {priceStrike}/-</p>
                 </div>
                 <div className={`${ outOfStock ? "btn-product-outofstock" : ""} flex flex-column`}>
-                    <button className={`${outOfStock ? "disabled" : ""} btn-product-cart text-base flex flex-justify-center`}>
-                    <span className="material-icons text-lg pdr-0-5">shopping_cart</span>Add to Cart</button>
-                    <button className={`${outOfStock ? "disabled" : ""} btn-product-wishlist text-base`}>
-                        Add to Wishlist</button>
+                    {
+                        !loggedIn ?
+                            <>
+                                <Link className="btn-product-cart text-base flex flex-justify-center" to="/login">
+                                    <span className="material-icons text-lg pdr-0-5">shopping_cart</span>
+                                    Add to Cart
+                                </Link>
+                                    
+                                <Link className="btn-product-wishlist text-base" to="/login">
+                                    Add to Wishlist
+                                </Link> 
+                            </>
+                        :
+                            <>
+                                {
+                                    (cart.length !==0 && cart.some((cartItem) => cartItem._id === _id)) 
+                                        ? 
+                                            <Link className="btn-product-cart text-base flex flex-justify-center"
+                                            to="/cart">
+                                            <span className="material-icons text-lg pdr-0-5">shopping_cart</span>Go to Cart</Link>
+                                        :
+                                            <button className="btn-product-cart text-base flex flex-justify-center"
+                                                onClick={() => {addToCart(item, "Added to cart")}}>
+                                            <span className="material-icons text-lg pdr-0-5">shopping_cart</span>Add to Cart</button>
+
+                                }   
+                                {
+                                    (wishlist.length !== 0 && wishlist.some((listItem) => listItem._id === _id)) 
+                                        ? 
+                                            <Link className="btn-product-wishlist text-base"
+                                                to="/wishlist">
+                                                Go to Wishlist</Link> 
+                                        :
+                                            <button className="btn-product-wishlist text-base"
+                                            onClick={()=>addToWishlist(item, "Added to wishlist")}>
+                                                Add to Wishlist</button>
+                                }                   
+                            </>
+
+                    }
+                    
                 </div>
             </div>
         </div>

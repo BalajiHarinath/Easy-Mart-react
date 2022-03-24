@@ -27,7 +27,7 @@ export const Products = () => {
                         filteredData.length===0 ? <div className="loading font-semibold text-2xl">No Products Found</div>
                             : filteredData.map((item) => {
                                 return(                                
-                                    <ProductItemCard item={item} key={item.id}/>
+                                    <ProductItemCard item={item} key={item._id}/>
                                 )
                             })
                     }

@@ -109,7 +109,7 @@
 }
 
 .btn-product-outofstock {
-    cursor: default;
+    pointer-events: none;
 }
 
 /*Media-Queries*/

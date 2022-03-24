@@ -12,7 +12,7 @@ export const Login = () => {
     const { login, testLogin } = useAuth();
     useEffect(() => {
         const timeoutId = setTimeout(() => {
-            setError({...error, isError: false})
+            setError({text:"", isError: false})
         }, 3000);
 
         return () => clearTimeout(timeoutId);

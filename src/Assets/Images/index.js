@@ -2,10 +2,10 @@ export { default as category1 } from "./Categories/home-page-category-shirt.jpg"
 export { default as category2 } from "./Categories/home-page-category-shoes.jpg";
 export { default as category3 } from "./Categories/home-page-category-sunglasses.jpg";
 export { default as brand1 } from "./Brands/home-page-brand-nike.jpg";
-export { default as brand2 } from "./Brands/home-page-brand-adidas.jpg";
-export { default as brand3 } from "./Brands/home-page-brand-puma.jpg";
-export { default as brand4 } from "./Brands/home-page-brand-rayban.jpg";
-export { default as brand5 } from "./Brands/home-page-brand-johnjacobs.jpg";
+// export { default as brand2 } from "./Brands/home-page-brand-adidas.jpg";
+export { default as brand2 } from "./Brands/home-page-brand-puma.jpg";
+export { default as brand3 } from "./Brands/home-page-brand-rayban.jpg";
+export { default as brand4 } from "./Brands/home-page-brand-johnjacobs.jpg";
 export { default as NikeCourtSkateboarding } from "./Products/Shoes/Nike/Nike-Court-Skateboarding.jpg";
 export { default as NikeMagnifyNitroRunning } from "./Products/Shoes/Nike/Nike-Magnify-Nitro-Running.jpg";
 export { default as NikeSoftrideRiftShoes } from "./Products/Shoes/Nike/Nike-Softride-Rift-Shoes.jpg";

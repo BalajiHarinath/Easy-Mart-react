@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useReducer } from "react";
 import axios from "axios";
 import { authReducer } from "../utils";
 
@@ -14,6 +14,8 @@ const initialAuthData = {
     testLogin: false,
     userName: "Profile",
     userId: "",
+    isError: false,
+    errorMessage: ""
 }
 
 const AuthContext = createContext(initialAuthData);
@@ -31,9 +33,11 @@ const AuthProvider = ({children}) => {
                 password: userDetails.password
             })
             localStorage.setItem("token", response.data.encodedToken);
-            authDispatch({type: "SUCCESS_TOAST", payload: {name:response.data.createdUser.firstName, toastMessage:"Signed up", id:response.data.createdUser._id }})
+            if(response.status === 201){
+                authDispatch({type: "SUCCESS_TOAST", payload: {name:response.data.createdUser.firstName, toastMessage:"Signed up", id:response.data.createdUser._id, wishlistData:[], cartData:[] }})
+            }         
         }catch(error){
-            console.log(error.response);
+            authDispatch({type: "LOGIN_ERROR", payload: {toastMessage: "Email already exists"}})
         }
         
     }
@@ -45,22 +49,58 @@ const AuthProvider = ({children}) => {
                 password: userDetails.password
             })
             localStorage.setItem("token", response.data.encodedToken)
-            authDispatch({type: "SUCCESS_TOAST", payload: {name:response.data.foundUser.firstName, toastMessage:"Logged in", id:response.data.foundUser._id}})
+            const config = {
+                headers:{
+                    authorization: localStorage.getItem("token")
+                }
+            }
+        
+            const wishlistResponse = await axios.get("/api/user/wishlist",config)
+            const cartResponse = await axios.get("/api/user/cart", config)
+
+            if(wishlistResponse.status === 200 && cartResponse.status === 200){
+                console.log("login 200")
+                authDispatch({type: "SUCCESS_TOAST", payload: {name:response.data.foundUser.firstName, toastMessage:"Logged in", id:response.data.foundUser._id, wishlistData: wishlistResponse.data.wishlist, cartData: cartResponse.data.cart} })
+            }
+            
+            else if(wishlistResponse.status === 404 || cartResponse.status === 404){
+                console.log("login 404")
+                authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"Data fetch failed" } })
+            }
+
         }catch(error){
-            console.log(error.response);
+            authDispatch({type: "LOGIN_ERROR", payload: {toastMessage: "Invalid credentials"}})
         }
     }
 
-    const testLogin = async() => {
+    const testLogin = async() => {     
         try{
             const response = await axios.post("api/auth/login", {
                 email: "testlogin@gmail.com",
                 password: "test123"
             })
+            
             localStorage.setItem("token", response.data.encodedToken)
-            authDispatch({type: "TEST_LOGIN", payload: {name:response.data.foundUser.firstName, toastMessage:"Logged in", id:response.data.foundUser._id} })
+
+            const config = {
+                headers:{
+                    authorization: localStorage.getItem("token")
+                }
+            }
+        
+            const wishlistResponse = await axios.get("/api/user/wishlist",config)
+            const cartResponse = await axios.get("/api/user/cart", config)
+
+            if(wishlistResponse.status === 200 && cartResponse.status === 200){
+                authDispatch({type: "TEST_LOGIN", payload: {name:response.data.foundUser.firstName, toastMessage:"Logged in", id:response.data.foundUser._id, wishlistData: wishlistResponse.data.wishlist, cartData: cartResponse.data.cart} })
+            }
+            
+            else if(wishlistResponse.status === 404 || cartResponse.status === 404){
+                authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"Data fetch failed" } })
+            }
+           
         }catch(error){
-            console.log(error);
+            authDispatch({type: "LOGIN_ERROR", payload: {toastMessage: "Email exists"}})
         }
     }
 
