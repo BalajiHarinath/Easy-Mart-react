@@ -31,7 +31,7 @@ export const SignUp = () => {
 
     const submitHandler = () => {
 
-        const passwordValidation = /^(?=.*\d)(?=.*[a-z]).{5,10}$/;
+        const passwordValidation = /^(?=.*\d)(?=.*[a-z]).{5,}$/;
 
         if(!userDetails.firstName || !userDetails.lastName || !userDetails.email || !userDetails.password || !userDetails.confirmPassword){
             setError({isError: true, text: "Please enter all the fields"})
