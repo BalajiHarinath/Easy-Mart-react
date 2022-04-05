@@ -9,7 +9,7 @@
     z-index: 1;
 }
 
-.title {
+.logo {
     color: var(--primary-color);
 }
 
@@ -83,7 +83,11 @@
     display: none;
 }
 
-.nav-wishlist:hover, .nav-cart:hover, .icon-theme:hover{
+:is(.nav-wishlist, .nav-cart, .icon-theme):hover {
+    color: var(--primary-color);
+}
+
+.selected {
     color: var(--primary-color);
 }
 

@@ -58,6 +58,10 @@
     color: var(--primary-color);
 }
 
+.container-cart-empty {
+    position: relative;
+}
+
 /*Media-Queries*/
 
 @media screen and (max-width : 1160px) {

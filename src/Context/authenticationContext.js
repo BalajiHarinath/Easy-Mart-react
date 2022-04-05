@@ -59,12 +59,10 @@ const AuthProvider = ({children}) => {
             const cartResponse = await axios.get("/api/user/cart", config)
 
             if(wishlistResponse.status === 200 && cartResponse.status === 200){
-                console.log("login 200")
                 authDispatch({type: "SUCCESS_TOAST", payload: {name:response.data.foundUser.firstName, toastMessage:"Logged in", id:response.data.foundUser._id, wishlistData: wishlistResponse.data.wishlist, cartData: cartResponse.data.cart} })
             }
             
             else if(wishlistResponse.status === 404 || cartResponse.status === 404){
-                console.log("login 404")
                 authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"Data fetch failed" } })
             }
 

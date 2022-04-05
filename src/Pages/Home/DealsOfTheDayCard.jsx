@@ -15,7 +15,7 @@ export const DealsOfTheDayCard = ({productData}) => {
                     dealsOfTheDayData.map((item) => {
                       const { _id, cardBadge, image:{ src, alt }, brand, product, rating, numberOfReviews, price, priceStrike } = item; 
                       return (
-                          <div className="card-product flex flex-column mb-4 mr-2" key={_id}>
+                          <div className="card-product-home-page flex flex-column mb-4 mr-2" key={_id}>
                               <div className="container-img-product">
                                   {cardBadge && <div className="card-badge">{cardBadge}</div>}
                                   <img className="img-product" loading="lazy" src={src} alt={alt}/>
