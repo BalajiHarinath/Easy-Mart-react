@@ -31,8 +31,7 @@ An E-commerce App built using React, having functionality like product listing, 
 - **React router**: v6.2.2
 - **Axios** : v0.21.4
 - **Mirage js** : v0.1.41
-- **Prop-Types** : v15.8.1
 - **JWT** : v8.5.1
-- **Gimesto Component library** (developed by me)
+- **SimpleUI Component library** (developed by me)
 
 ---
