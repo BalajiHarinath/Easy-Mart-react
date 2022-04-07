@@ -2,26 +2,27 @@
  
 An E-commerce App built using React, having functionality like product listing, cart, wishlist and filtering.
 
-
+[Easy Mart](https://easy-mart-react.netlify.app/)
 ---
 
 ### Features:
 
-1. Authentication: Login and SignUp functionality
-2. Private and public routes: Private routes accessible only on login
-3. User actions like add/remove from cart, toggle wishlist
-4. Increment/decrement quantity in Cart page
-5. Total price with quantity shown in the place order section
-6. React: useContext, useReducer, useEffect, useState, custom hooks, functional components
-7. Mock backend using Mirage JS and Mockman API.
+1. Authentication: Login and SignUp functionality.
+2. Private and public routes: Private routes accessible only on login.
+3. Filter products based on category, brand, price, rating.
+4. Search a Product.
+5. User actions like add/remove from cart, toggle wishlist.
+6. Increment/decrement quantity in Cart page.
+7. Total price with quantity shown in the place order section.
+8. React: useContext, useReducer, useEffect, useState, custom hooks, functional components
+9. Mock backend using Mirage JS and Mockman API.
 
 #### Features in progress/TODOs
 
-1. Product search functionality
-2. Address management for orders
-3. User profile page
-4. Orders section
-5. Payment integration
+1. Address management for orders.
+2. User profile page.
+3. Orders section.
+4. Payment integration.
 
 ---
 
