@@ -4,6 +4,7 @@ import "./Nav.css";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Sidebar }  from "./sidebar";
+import { SearchBar } from "./SearchBar";
 import { useAuth } from "../../Context";
 
 export const Nav = () => {
@@ -33,10 +34,7 @@ export const Nav = () => {
                 </div>   
             </div>
 
-            <div className="searchbar flex flex-justify-center pd-1 flex-grow-1">
-                <button className="btn-searchbar flex flex-align-center"><span className="material-icons text-lg">search</span></button>
-                <input className="input-searchbar" type="text" placeholder="Type to search"/>
-            </div>
+            <SearchBar />
 
             <ul className="nav-icons flex flex-justify-center flex-gap-2 list-style-none">
                 
@@ -86,8 +84,7 @@ export const Nav = () => {
         </nav>
 
         <div className="searchbar-small-screen">
-            <button className="btn-searchbar"><span className="material-icons text-lg">search</span></button>
-            <input className="input-searchbar flex flex-grow-1" type="text" placeholder="Type to search"/>
+            <SearchBar isSmallScreen={{isSmallScreen: true}}/>
         </div>
 
         {showSidebar && <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>}

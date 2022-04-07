@@ -1,0 +1,51 @@
+.main-searchpage {
+    margin-top: calc(4.375rem + 1rem);
+    min-height: calc(100vh - 20rem);
+}
+
+.title-searchpage {
+    grid-column: 1/-1;
+}
+
+/*Media-Queries*/
+
+@media screen and (max-width : 1160px) {
+
+    .title-searchpage {
+        margin-top: 2rem;
+        width: 100%;
+     }
+
+}
+
+@media screen and (max-width : 1000px) {
+    :root{
+        font-size: 14px;
+    }
+
+    .container-searchpage-card {
+        margin-left: 4rem;
+        margin-right: 3rem;
+    }
+}
+
+@media screen and (max-width : 640px) {
+    :root{
+        font-size: 12px;
+    }
+
+    .container-searchpage-card {
+        margin-left: 3rem;
+        margin-right: 3rem;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width : 480px) {
+
+    .container-searchpage-card {
+        margin-left: 3rem;
+        margin-right: 3rem;
+        justify-content: center;
+    }
+}
