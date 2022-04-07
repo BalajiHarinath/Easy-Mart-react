@@ -14,7 +14,7 @@ const Sidebar = ({showSidebar, setShowSidebar}) => {
                     sidebarData.map((item,index) => {
                         const { name, link } = item
                     return(
-                        <Link key={index} className="sidebar-item pd-1" to={link}>{name}</Link>
+                        <Link key={index} className="sidebar-item pd-1" onClick={sideBarCloseBtn} to={link}>{name}</Link>
                     )
                 
                     })
