@@ -3,9 +3,10 @@ import "./authentication.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../Context";
-
+import { useDocumentTitle } from "../../utils";
 
 export const SignUp = () => {
+    useDocumentTitle();
     const { authState, signup } = useAuth();
 
     const [userDetails, setUserDetails] = useState({

@@ -5,9 +5,8 @@
     letter-spacing: 0.5px;
 }
 
-.title-footer {
-    color: var(--footer-heading);
-    text-transform: uppercase;
+.logo {
+    color: var(--primary-color)  !important
 }
 
 .links-footer {

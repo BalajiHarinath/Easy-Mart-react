@@ -3,9 +3,10 @@ import "./authentication.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../Context";
+import { useDocumentTitle } from "../../utils";
 
 export const Login = () => {
-
+    useDocumentTitle();
     const [userDetails, setUserDetails] = useState({email: "", password: "", rememberMe: false})
     const [error, setError] = useState({isError: false, text: ""})
     const [showPasswordToggle, setShowPasswordToggle] = useState(true)

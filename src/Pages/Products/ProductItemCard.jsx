@@ -10,7 +10,7 @@ export const ProductItemCard = ({item}) => {
     const { authState: { wishlist, cart, loggedIn } } = useAuth();
 
     return(
-        <div className={`${ outOfStock ? "card-product-outofstock" : "card-product"} flex flex-column mb-4 mr-2`}>
+        <div className={`${ outOfStock ? "card-product-outofstock card-product" : "card-product"} flex flex-column mb-4 mr-2`}>
             <div className="container-img-product">
                 {cardBadge && <div className="card-badge">{cardBadge}</div>}
                 <img className="img-product" loading="lazy" src={src} alt={alt}/>

@@ -40,14 +40,14 @@
 
 .card-product {
     width: 16rem;
-    height: 22rem;
+    height: 24.75rem;
     box-shadow: var(--box-shadow1);
     transition: all 0.1s ease;
 }
 
 .card-product:hover {
-    transform: scale(1.01);
-    box-shadow: var(--box-shadow);;
+    transform: scale(1);
+    box-shadow: var(--box-shadow);
 }
 
 .container-img-product {
@@ -168,7 +168,7 @@
 
     .card-product {
         width: 15rem;
-        height: 22rem;
+        height: 25rem;
     }
 
     .container-img-product {

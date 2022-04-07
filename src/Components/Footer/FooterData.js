@@ -9,24 +9,24 @@ export const footerData = [
         },
 
         {
-          link : "/",
+          link : "/products",
           linkText : "Shop Now",
         },
 
         {
-          link : "/",
+          link : "/wishlist",
           linkText : "Wishlist",
         },
 
         {
-          link : "/",
+          link : "/cart",
           linkText : "Cart",
         },
       ]
     },
 
     {
-      title : "policy",
+      title : "Policy",
       links : [
         {
           link : "/",
@@ -51,7 +51,7 @@ export const footerData = [
     },
 
     {
-      title : "social",
+      title : "Social",
       links : [
         {
           link : "/",

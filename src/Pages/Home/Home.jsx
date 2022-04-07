@@ -5,10 +5,11 @@ import { useCategory, useBrand, useProducts } from "../../Context";
 import { CategoryCard, BrandCard, DealsOfTheDayCard } from "./index";
 import { Link } from "react-router-dom";
 import { Loader } from "../../Components";
-import { useScrollToTop } from "../../utils";
+import { useScrollToTop, useDocumentTitle } from "../../utils";
 
 export const Home = () => {
     useScrollToTop();
+    useDocumentTitle();
     const { categoryStatus, categoryData } = useCategory();
     const { brandStatus, brandData } = useBrand();
     const { products } = useProducts();

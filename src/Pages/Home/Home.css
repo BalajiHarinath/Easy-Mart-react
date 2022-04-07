@@ -79,21 +79,21 @@
     grid-column: 2/-1;
 }
 
-.card-product {
+.card-product-home-page {
     width: 16rem;
-    height: 25rem;
+    height: 23.5rem;
     box-shadow: var(--box-shadow1);
     transition: all 0.1s ease;
 }
 
-.card-product:hover {
-    transform: scale(1.01);
+.card-product-home-page:hover {
+    /* transform: scale(1.01); */
     box-shadow: var(--box-shadow);;
 }
 
 .container-img-product {
     width: 16rem;
-    height: 16.875rem;
+    height: 13.875rem;
 }
 
 .card-badge {
@@ -175,7 +175,7 @@
         justify-content: space-evenly;
     }
 
-    .card-product {
+    .card-product-home-page {
         width: 15rem;
         height: 22rem;
     }

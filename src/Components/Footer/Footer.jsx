@@ -1,5 +1,6 @@
 import "../../css/main.css";
 import "./Footer.css";
+import { Link } from "react-router-dom"
 import { footerData } from "./FooterData";
 
 export const Footer = () => {
@@ -18,12 +19,12 @@ export const Footer = () => {
                 const { title, links } = item;
                 return(
                   <ul className="flex flex-column flex-gap-0-5 list-style-none m-1" key={index}>
-                    <h5 className="title-footer">{title}</h5>
+                    <h5 className="logo">{title}</h5>
                       {
                         links.map((item,index) => {
                           const { link, linkText } = item;
                           return(
-                            <li key={index}><a className="links-footer" href="/">{linkText}</a></li>
+                            <Link key={index} className="links-footer" to={link}>{linkText} </Link>
                           )
                         })
                       }

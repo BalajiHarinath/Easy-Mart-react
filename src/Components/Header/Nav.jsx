@@ -2,22 +2,19 @@
 import "../../css/main.css";
 import "./Nav.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Sidebar }  from "./sidebar";
+import { SearchBar } from "./SearchBar";
 import { useAuth } from "../../Context";
 
 export const Nav = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const {authState: { loggedIn, userName, wishlist, cart }, logout } = useAuth();
+  const location = useLocation();
 
   const hamburgerHandler = () => {
     setShowSidebar(!showSidebar);
   }
-
-  const navLinks = [
-    { text: "Home", link:"/"},
-    { text: "Shop Now", link:"/products"}
-  ]
   
   return (
     <div className="App">
@@ -28,31 +25,22 @@ export const Nav = () => {
                   <span className="material-icons text-3xl">menu</span>
                 </button>
 
-                <h4 className="title font-bold m">Easy Mart</h4>
+                <Link className="logo font-bold text-2xl" to="/">Easy Mart</Link>
 
-                <ul className="list-style-none flex flex-gap-1">
-                  {
-                    navLinks.map(({ text, link }) => {
-                      return(
-                        <li key={text}>
-                          <Link className="nav-links font-semibold ml-2 nav-home display-desktop" to={link}>{text}</Link>
-                        </li>
-                      )
-                    })
-                  }
-                </ul>   
+                <div className="list-style-none flex flex-gap-1">               
+                    <div>
+                      <Link className="nav-links font-semibold ml-2 nav-home display-desktop" to="/products">Shop Now</Link>
+                    </div>                
+                </div>   
             </div>
 
-            <div className="searchbar flex flex-justify-center pd-1 flex-grow-1">
-                <button className="btn-searchbar flex flex-align-center"><span className="material-icons text-lg">search</span></button>
-                <input className="input-searchbar" type="text" placeholder="Type to search"/>
-            </div>
+            <SearchBar />
 
             <ul className="nav-icons flex flex-justify-center flex-gap-2 list-style-none">
                 
                 <li className="flex flex-column flex-justify-center flex-align-center">
                     <Link className="flex flex-column" to="/login">
-                        <span className="material-icons text-2xl nav-links nav-profile">account_circle</span>
+                        <span className={`${["/login", "/signup"].includes(location.pathname) && "selected"} material-icons text-2xl nav-links nav-profile`}>account_circle</span>
                     </Link>
                     <span className="text-xs text-capitalize">{userName}</span>
                 </li>
@@ -60,7 +48,7 @@ export const Nav = () => {
                 <li className="flex flex-column flex-justify-center flex-align-center">
                     <Link className="flex flex-column" to="/wishlist">
                         <span className="container-badge">
-                            <span className="material-icons text-2xl nav-links nav-wishlist">favorite</span>
+                            <span className={`${location.pathname === "/wishlist" && "selected"} material-icons text-2xl nav-links nav-wishlist`}>favorite</span>
                             {wishlist.length>0 && <span className="status-badge status-badge-number">{wishlist.length}</span>}
                         </span>
                     </Link>
@@ -68,9 +56,9 @@ export const Nav = () => {
                 </li>
 
                 <li className="flex flex-column flex-justify-center flex-align-center">
-                    <Link className="flex flex-column" to="/cart">
+                    <Link className={`${location.pathname === "/cart" && "selected"} flex flex-column`} to="/cart">
                         <span className="container-badge">
-                            <span className="material-icons text-2xl nav-links nav-cart">shopping_cart</span>
+                            <span className={`${location.pathname === "/cart" && "selected"} material-icons text-2xl nav-links nav-cart`}>shopping_cart</span>
                             {cart.length>0 && <span className="status-badge status-badge-number">{cart.length}</span>}
                         </span>
                     </Link>    
@@ -96,8 +84,7 @@ export const Nav = () => {
         </nav>
 
         <div className="searchbar-small-screen">
-            <button className="btn-searchbar"><span className="material-icons text-lg">search</span></button>
-            <input className="input-searchbar flex flex-grow-1" type="text" placeholder="Type to search"/>
+            <SearchBar isSmallScreen={{isSmallScreen: true}}/>
         </div>
 
         {showSidebar && <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>}
