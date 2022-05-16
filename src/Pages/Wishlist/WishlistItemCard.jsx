@@ -12,9 +12,9 @@ export const WishlistItemCard = ({item}) =>{
     return(
         <div className="flex flex-justify-center flex-align-center"> {/*<!--Added this div to center the content in each grid-->*/}
             <div className="wishlist-card flex flex-column mr-2 mb-3" >
-                <div className="container-img-wishlist">
+                <Link className="container-img-wishlist" to={`/singleproduct/${_id}`}>
                     <img className="img-wishlist" loading="lazy" src={src} alt={alt}/>
-                </div>
+                </Link>
                 <div className="flex-grow-1 pd-1">
                     <div className="container-wishlist-text flex flex-column flex-justify-space-between flex-gap-0-5">
                         <p className="text-lg font-semibold">{brandName}</p>

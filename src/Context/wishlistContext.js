@@ -24,26 +24,32 @@ const WishlistProvider = ({children}) => {
             )
             if(response.status === 201){
                 authDispatch({type:"ADD_TO_WISHLIST", payload: {toastMessage: toastText, data: response.data.wishlist}})
-            }         
+            }   
+            else if(response.status === 404){
+                authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"The email is not Registered" } })
+            }       
 
         }catch(error){
             console.log(error);
+            authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"Add to wishlist failed" } })
         }
     }
 
     const removeFromWishlist = async(_id, toastText) => {
-        console.log(_id)
         try{
             const response = await axios.delete(
                 `/api/user/wishlist/${_id}`, config
                 )
             if(response.status === 200){
-                console.log(response.data)
                 authDispatch({type:"REMOVE_FROM_WISHLIST", payload: {toastMessage: toastText, data: response.data.wishlist}})
             }
+            else if(response.status === 404){
+                authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"The email is not Registered" } })
+            } 
             
         }catch(error){
             console.log(error);
+            authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"Remove from wishlist failed" } })
         }
     }
 

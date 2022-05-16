@@ -1,6 +1,7 @@
 .main-cart {
     margin-top: calc(4.375rem + 1rem);
     min-height: calc(100vh - 20rem);
+    position: relative;
 }
 
 .title-cart {
@@ -60,6 +61,47 @@
 
 .container-cart-empty {
     position: relative;
+}
+
+/*Coupon*/
+.modal-container-offer {
+    position: fixed;
+    top: 30vh;
+    left: 30vw;
+    /* filter: drop-shadow(8px 8px 10px rgb(97, 95, 95)) */
+    /* backdrop-filter: blur(5px); */
+}
+
+.modal {
+    height: fit-content;
+    width: fit-content;
+    backdrop-filter: blur(5px);
+}
+
+.offer-details {
+    text-align: left;
+    border: 1px solid var(--border-color1);
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+.input-offer {
+    accent-color: var(--primary-color);
+    width: 1rem;
+    height: 0.9rem;
+    margin-right: 10px;
+}
+
+.modal-btn-container {
+    width: 100%;
+}
+
+.modal-btn {
+    width: inherit;
+}
+
+.poniter-events-none {
+    pointer-events: none;
 }
 
 /*Media-Queries*/
