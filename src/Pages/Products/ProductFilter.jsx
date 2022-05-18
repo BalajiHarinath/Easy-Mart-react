@@ -39,7 +39,7 @@ export const ProductFilter = ({showFilterSmallScreen, setShowFilterSmallScreen})
                     <option value="4" label="4"></option>
                     <option value="5" label="5"></option>
                 </datalist>
-                <input className="slider m-0" type="range" min="1" max="5" step="1" value={products.filterData.filterByRating} onChange={(e) => productsDispatch({type: "FILTER_BY_RATING", payload: e.target.value})}/>   
+                <input className="slider m-0" list="tickmarks" type="range" min="1" max="5" step="1" value={products.filterData.filterByRating} onChange={(e) => productsDispatch({type: "FILTER_BY_RATING", payload: e.target.value})}/>   
             </li>
 
             <div className="spacer-1"></div>

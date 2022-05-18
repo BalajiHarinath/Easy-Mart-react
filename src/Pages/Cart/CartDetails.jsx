@@ -23,7 +23,6 @@ export const CartDetails = () => {
     },[removeFromCart, updateItemQuantity])
 
     useEffect(() => {
-        console.log(totalAmount)
         if(Number(totalAmount) < Number(1500) || totalAmount === 0) {
             setIsEligibleForCoupon(false)
         }else{

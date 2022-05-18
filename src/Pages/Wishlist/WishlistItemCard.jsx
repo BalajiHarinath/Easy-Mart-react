@@ -10,7 +10,7 @@ export const WishlistItemCard = ({item}) =>{
     const { authState: {cart}} = useAuth();
 
     return(
-        <div className="flex flex-justify-center flex-align-center"> {/*<!--Added this div to center the content in each grid-->*/}
+        <div className="flex flex-justify-center flex-align-center"> 
             <div className="wishlist-card flex flex-column mr-2 mb-3" >
                 <Link className="container-img-wishlist" to={`/singleproduct/${_id}`}>
                     <img className="img-wishlist" loading="lazy" src={src} alt={alt}/>
