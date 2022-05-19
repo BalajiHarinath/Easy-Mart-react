@@ -11,10 +11,10 @@ export const ProductItemCard = ({item}) => {
 
     return(
         <div className={`${ outOfStock ? "card-product-outofstock card-product" : "card-product"} flex flex-column mb-4 mr-2`}>
-            <div className="container-img-product">
+            <Link className="container-img-product" to={`/singleproduct/${_id}`}>
                 {cardBadge && <div className="card-badge">{cardBadge}</div>}
                 <img className="img-product" loading="lazy" src={src} alt={alt}/>
-            </div>
+            </Link>
             <div className="flex flex-column flex-gap-0-5">
                 <h3 className="dod-company pdl-1 mt-0-5">{brandName}</h3>
                 <h2 className="dod-product pdl-1">{product}</h2>

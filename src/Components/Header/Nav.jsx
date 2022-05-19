@@ -71,13 +71,6 @@ export const Nav = () => {
                     </Link>
                     <span className="text-xs">LogOut</span>
                 </li>
-
-                <li className="flex flex-column flex-justify-center flex-align-center">
-                    <button className="btn-transparent">
-                        <span className="material-icons icon-theme text-3xl">dark_mode</span>
-                        {/* <span class="material-icons icon-theme text-3xl">{theme ? "dark_mode" : "light_mode"}</span> */}
-                    </button>
-                </li>
            
             </ul>
 

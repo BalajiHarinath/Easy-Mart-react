@@ -27,11 +27,14 @@ const CartProvider = ({children}) => {
             if(response.status === 201){
                 authDispatch({type: "ADD_TO_CART", payload:{toastMessage: toastText, data: response.data.cart}})
             }
+            else if(response.status === 404){
+                authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"The email is not Registered" } })
+            } 
 
         }catch(error){
             console.log(error)
+            authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"Add to cart failed" } })
         }
-        
     }
 
     const removeFromCart = async(_id, toastText) => {
@@ -42,9 +45,13 @@ const CartProvider = ({children}) => {
             if(response.status === 200){
                 authDispatch({type: "REMOVE_FROM_CART", payload:{toastMessage: toastText, data: response.data.cart}})
             }
+            else if(response.status === 404){
+                authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"The email is not Registered" } })
+            } 
 
         }catch(error){
             console.log(error)
+            authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"Remove from cart failed" } })
         }
     }
 
@@ -62,9 +69,13 @@ const CartProvider = ({children}) => {
             if(response.status === 200){
                 authDispatch({type: "UPDATE_CART", payload:{toastMessage: toastText, data: response.data.cart}})
             }
+            else if(response.status === 404){
+                authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"The email is not Registered" } })
+            } 
 
         }catch(error){
             console.log(error)
+            authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"Cart item update failed" } })
         }
     }
 

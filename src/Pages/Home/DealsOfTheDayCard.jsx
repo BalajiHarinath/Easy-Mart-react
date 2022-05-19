@@ -16,10 +16,10 @@ export const DealsOfTheDayCard = ({productData}) => {
                       const { _id, cardBadge, image:{ src, alt }, brand, product, rating, numberOfReviews, price, priceStrike } = item; 
                       return (
                           <div className="card-product-home-page flex flex-column mb-4 mr-2" key={_id}>
-                              <div className="container-img-product">
+                              <Link className="container-img-product" to={`/singleproduct/${_id}`}>
                                   {cardBadge && <div className="card-badge">{cardBadge}</div>}
                                   <img className="img-product" loading="lazy" src={src} alt={alt}/>
-                              </div>
+                              </Link>
                               <div className="flex flex-column flex-gap-0-5">
                                   <h3 className="dod-company pdl-1 mt-0-5">{brand}</h3>
                                   <h2 className="dod-product pdl-1">{product}</h2>

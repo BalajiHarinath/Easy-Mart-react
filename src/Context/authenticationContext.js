@@ -15,7 +15,9 @@ const initialAuthData = {
     userName: "Profile",
     userId: "",
     isError: false,
-    errorMessage: ""
+    errorMessage: "",
+    cartStatus: "",
+    wishlistStatus: "",
 }
 
 const AuthContext = createContext(initialAuthData);

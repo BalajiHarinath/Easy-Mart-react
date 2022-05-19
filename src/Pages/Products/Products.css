@@ -53,6 +53,7 @@
 .container-img-product {
     width: 16rem;
     height: 13.875rem;
+    cursor: pointer;
 }
 
 .card-badge {
@@ -102,6 +103,7 @@
 /*Out of stock*/
 .card-product-outofstock {
     opacity: 0.5;
+    pointer-events: none;
 }
 
 .card-product-outofstock:hover {
