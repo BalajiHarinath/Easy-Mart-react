@@ -9,20 +9,16 @@ An E-commerce App built using React, having functionality like product listing, 
 
 1. Authentication: Login and SignUp functionality.
 2. Private and public routes: Private routes accessible only on login.
-3. Filter products based on category, brand, price, rating.
-4. Search a Product.
-5. User actions like add/remove from cart, toggle wishlist.
-6. Increment/decrement quantity in Cart page.
-7. Total price with quantity shown in the place order section.
-8. React: useContext, useReducer, useEffect, useState, custom hooks, functional components
-9. Mock backend using Mirage JS and Mockman API.
-
-#### Features in progress/TODOs
-
-1. Address management for orders.
-2. User profile page.
-3. Orders section.
-4. Payment integration.
+3. Landing page containing categories and brands of products that are available and deals of the day products.
+4. Filter products based on category, brand, price, rating.
+5. Single product page.
+6. Search a product.
+7. User actions like add/remove from cart, toggle wishlist.
+8. Increment/decrement quantity in Cart page.
+9. Add coupons.
+10. Total price with quantity shown in the place order section.
+11. React: useContext, useReducer, useEffect, useState, custom hooks, functional components
+12. Mock backend using Mirage JS and Mockman API.
 
 ---
 
