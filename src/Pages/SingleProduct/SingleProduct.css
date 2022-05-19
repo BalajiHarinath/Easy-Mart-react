@@ -1,0 +1,123 @@
+.main-singleproduct {
+    margin-top: calc(4.375rem + 3rem);
+    min-height: calc(100vh - 20rem);
+}
+
+.container-single-product-page {
+    margin: 2rem 2rem 6rem 2rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: fit-content;
+    max-width: 60rem;
+    height: fit-content;
+    border: 1px solid var(--border-color1);
+  }
+  
+  .cart-img {
+    width: 20rem;
+    height: inherit;
+    object-fit: contain;
+  }
+  
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .card-rating-stars > span {
+      color: var(--primary-color);
+  }
+  
+  .cart-article-discount {
+    color: var(--primary-color);
+  }
+  
+  .product-status {
+    color: var(--gray-light);
+  }
+
+  .btn-container-single-product-page {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.8rem;
+  }
+  
+  .cart-article-btn-remove-from-cart,
+  .cart-article-btn-move-to-wishlist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .cart-article-btn-remove-from-cart:hover,
+  .cart-article-btn-move-to-wishlist:hover {
+    transform: scale(1);
+  }
+
+  /* Media queries */
+
+  @media screen and (max-width: 1160px) {
+    .main-singleproduct {
+        margin-top: calc(4.375rem + 5rem);
+    }
+  }
+  
+  @media screen and (max-width: 1000px) {
+    :root {
+      font-size: 14px;
+    }
+  
+    .cart-img {
+      width: 20rem;
+      height: inherit;
+      object-fit: contain;
+    }
+  }
+  
+  @media screen and (max-width: 680px) {
+    .product-status {
+      display: none;
+    }
+  
+    .btn-container-single-product-page {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: 0.8rem;
+    }
+  }
+  
+  @media screen and (max-width: 640px) {
+    :root {
+      font-size: 12px;
+    }
+  
+    .cart-img {
+      width: 19rem;
+      height: inherit;
+      object-fit: contain;
+    }
+  }
+  
+  @media screen and (max-width: 500px) {
+    .container-single-product-page {
+      margin: 2rem;
+      display: grid;
+      grid-template-columns: 100%;
+      width: fit-content;
+      max-width: 60rem;
+      height: fit-content;
+      border: 1px solid var(--border-color1);
+    }
+  
+    .cart-img {
+      width: 100%;
+      height: 25rem;
+      object-fit: contain;
+    }
+  }

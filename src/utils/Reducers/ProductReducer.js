@@ -9,6 +9,9 @@ export const ProductReducer = (products, {type, payload}) => {
         case "ACTION_TYPE_ERROR":
             return { ...products, productStatus: "error", productData: payload }
 
+        case "SINGLE_PRODUCT_DATA":
+            return { ...products, productStatus: "success", singleProductData: payload }
+
         case "FILTER_BY_RATING":
             return {...products, filterData:{...products.filterData, filterByRating: payload}}
 

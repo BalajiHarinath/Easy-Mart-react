@@ -5,6 +5,7 @@ import { ProductReducer } from "../utils";
 const initialProductData = {
     productStatus: "loading",
     productData: [],
+    singleProductData: null,
     sortBy: "",
     filterData : {
         filterByCategory: [],
@@ -40,8 +41,19 @@ const ProductProvider = ({children}) => {
         
     },[])
 
+    const getSingleProduct = async(_id) => { 
+        productsDispatch({type: "ACTION_TYPE_LOADING"})
+        try{         
+            const response = await axios.get(`/api/products/${_id}`);
+            productsDispatch({type: "SINGLE_PRODUCT_DATA", payload: response.data.product})
+        }
+        catch{
+        productsDispatch({type: "ACTION_TYPE_ERROR", payload:"Error in fetching the product data"})
+        }
+    }
+
     return(
-        <ProductContext.Provider value={{products, productsDispatch}}>
+        <ProductContext.Provider value={{products, getSingleProduct, productsDispatch}}>
             {children}
         </ProductContext.Provider>
     )

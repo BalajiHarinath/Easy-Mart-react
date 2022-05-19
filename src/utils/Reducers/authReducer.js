@@ -15,7 +15,8 @@ export const authReducer = (state, { type, payload }) => {
 
         case "LOGOUT":
             return{...state, toastData: {...state.toastData, status:"removed", display: true, data: payload.toastMessage}, loggedIn: false, testLogin: false, userName: "Profile", userId: payload.id, wishlist:[], cart: []}
-
+            
+       
         //wishlist 
         case "ADD_TO_WISHLIST":
             return{...state, toastData: {...state.toastData, status:"added", display: true, data: payload.toastMessage}, wishlist: payload.data}

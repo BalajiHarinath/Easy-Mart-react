@@ -7,7 +7,7 @@ export const Footer = () => {
     return(
         <footer className="footer flex flex-justify-space-around flex-align-center pdt-2 pdb-2">
             <ul className="flex flex-column flex-gap-0-5 list-style-none m-1">
-              <h5 className="title font-bold">Easy Mart</h5>
+              <h5 className="logo font-bold">Easy Mart</h5>
               <li><a className="links-footer" href="/">Contact Us</a></li>
               <li><a className="links-footer" href="/">About Us</a></li>
               <li><a className="links-footer" href="/">Careers</a></li>
