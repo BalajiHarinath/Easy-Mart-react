@@ -2,7 +2,7 @@
  
 An E-commerce App built using React, having functionality like product listing, cart, wishlist and filtering.
 
-[Easy Mart](https://easy-tv.netlify.app/)
+[Easy Mart](https://easy-mart-1.netlify.app/)
 ---
 
 ### Features:
