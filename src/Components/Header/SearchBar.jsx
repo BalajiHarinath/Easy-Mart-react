@@ -7,6 +7,7 @@ export const SearchBar = ({isSmallScreen}) => {
     const[searchTerm, setSearchTerm] = useState("");
     const[activeSearchBar, setActiveSearchBar] = useState(false);
     const searchBarRef= useRef(null);
+    const timerId = useRef(null);
 
     const navigate = useNavigate();
 
@@ -21,14 +22,26 @@ export const SearchBar = ({isSmallScreen}) => {
         return () => {document.removeEventListener("click", closeActiveSearchBar )}
     },[])
 
-    
-    const searchSubmit = () => {
+    const searchSubmit = () => { 
         if(searchTerm!==""){
             navigate(`/search?searchTerm=${encodeURIComponent(searchTerm)}`);
             setSearchTerm("");
             setActiveSearchBar(false);
         }
     }
+
+    const debounce = function(fn, delay){
+        let timer;
+        return function() {
+            clearTimeout(timerId.current)
+            timer = setTimeout(() => {
+                fn()
+            },delay)
+            timerId.current = timer
+        }
+    }
+
+    const debounceFunction = debounce(searchSubmit, 1000)
 
     return(
         !isSmallScreen ? 
@@ -43,9 +56,7 @@ export const SearchBar = ({isSmallScreen}) => {
                 onFocus={() => {setActiveSearchBar(true)}}
                 value={searchTerm} 
                 onChange={e => setSearchTerm(e.target.value)}
-                onKeyUp={e => { if(e.key === "Enter") {
-                    searchSubmit();
-                }}}
+                onKeyUp = {() => debounceFunction()}
                 placeholder="Type to search"/>
         </div> :
         <>
@@ -59,9 +70,7 @@ export const SearchBar = ({isSmallScreen}) => {
                 ref={searchBarRef}
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
-                onKeyUp={e => { if(e.key === "Enter") {
-                    searchSubmit();
-                }}}
+                onKeyUp = {() => debounceFunction()}
                 placeholder="Type to search"/>
         </>
         
