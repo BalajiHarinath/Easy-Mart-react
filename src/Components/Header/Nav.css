@@ -29,6 +29,10 @@
     padding: 0rem 1rem;
 }
 
+.display-none {
+    display: none;
+}
+
 .input-searchbar {
     border: 1px solid var(--border-color1);
     border-left: none;
@@ -36,6 +40,33 @@
     width: 35rem;
     padding: 0.625rem 1.25rem;
     outline: none;
+}
+
+.searchbar {
+    position: relative;
+}
+
+.searchitem-list{
+    list-style: none;
+    position: absolute;
+    width: 38.125rem;
+    height: fit-content;
+    max-height: 15rem;
+    overflow-y: hidden;
+    top: 3.5rem;
+    z-index: 20;
+    background-color: var(--white);
+}
+
+.searchitem {
+    cursor: pointer;
+    text-align: left;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.searchitem:hover {
+    background-color: var(--secondary-color);
 }
 
 .container-badge{
@@ -107,6 +138,19 @@
     .display-desktop{
         display: none;
     }
+
+    .searchitem-list{
+        list-style: none;
+        position: absolute;
+        width: 38.125rem;
+        height: fit-content;
+        max-height: 15rem;
+        overflow-y: hidden;
+        top: 2.5rem;
+        z-index: 20;
+        background-color: var(--white);
+    }
+    
 }
 
 @media screen and (max-width : 1210px) {

@@ -3,7 +3,7 @@ import "./css/main.css";
 
 import { Route, Routes} from 'react-router-dom';
 import { Nav, Toast, Footer, RestrictAuth, RequireAuth } from "./Components";
-import  { Home, Products, SignUp, Login, Wishlist, Cart, Error, SearchPage, SingleProduct } from "./Pages";
+import  { Home,  MockmanAPI, Products, SignUp, Login, Wishlist, Cart, Error, SearchPage, SingleProduct, Checkout } from "./Pages";
 import { CategoryProvider, BrandProvider } from "./Context";
 import MockAPI from "./Components/Mockman/mockman";
 
@@ -45,8 +45,11 @@ function App() {
           <Route element={<RequireAuth />}>
             <Route path="/wishlist" element={<Wishlist />}/>
             <Route path="/cart" element={<Cart />}/>
+            <Route path="/checkout" element={<Checkout />} />
+            
           </Route>
           <Route path="*" element={<Error />} />
+          <Route path="/mockman" element={<MockmanAPI />} />
         </Routes>    
       <Footer />  
     </div>

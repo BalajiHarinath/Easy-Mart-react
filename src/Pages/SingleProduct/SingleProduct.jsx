@@ -42,12 +42,12 @@ export const SingleProduct = () => {
                         <span className="cart-article-discount text-sm font-semibold">
                             10% off
                         </span>
-                        <div className="card-rating-stars">
+                        <div className="card-rating-stars flex align-items-center">
                             {Array.apply(null, {length: singleProductData?.rating}).map((e,i) => (<span className="material-icons text-lg" key={i}>star</span>)) }
                             <span className="text-sm">({singleProductData?.numberOfReviews})</span>
                         </div>
 
-                        <p className="text-align-left pdb-1">
+                        <p className="text-align-left pdb-1 text-base">
                             {singleProductData?.description}
                         </p>
                         <div className="product-status">

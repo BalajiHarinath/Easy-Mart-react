@@ -1,4 +1,5 @@
 export { Home } from "./Home/Home";
+export { MockmanAPI } from "./MockmanAPI/MockmanAPI";
 export { Products } from "./Products/Products";
 export { SignUp } from "./Authentication/Signup";
 export { Login } from "./Authentication/Login";
@@ -7,3 +8,4 @@ export { Cart } from "./Cart/Cart";
 export { Error } from "./Error/Error";
 export { SearchPage } from "./Search/SearchPage";
 export { SingleProduct } from "./SingleProduct/SingleProduct";
+export { Checkout } from "./Checkout/Checkout";

@@ -2,6 +2,7 @@ import { createContext, useContext, useReducer } from "react";
 import axios from "axios";
 import { authReducer } from "../utils";
 
+const userId = localStorage.getItem("token")
 const initialAuthData = {
     wishlist: [],
     cart: [],
@@ -10,6 +11,7 @@ const initialAuthData = {
         display: false,
         data: ""
     },
+    addressData: [],
     loggedIn: false,
     testLogin: false,
     userName: "Profile",
@@ -59,9 +61,10 @@ const AuthProvider = ({children}) => {
         
             const wishlistResponse = await axios.get("/api/user/wishlist",config)
             const cartResponse = await axios.get("/api/user/cart", config)
+            const addressResponse = await axios.get("/api/user/address", config)
 
-            if(wishlistResponse.status === 200 && cartResponse.status === 200){
-                authDispatch({type: "SUCCESS_TOAST", payload: {name:response.data.foundUser.firstName, toastMessage:"Logged in", id:response.data.foundUser._id, wishlistData: wishlistResponse.data.wishlist, cartData: cartResponse.data.cart} })
+            if(wishlistResponse.status === 200 && cartResponse.status === 200 && addressResponse.status === 200){
+                authDispatch({type: "SUCCESS_TOAST", payload: {name:response.data.foundUser.firstName, toastMessage:"Logged in", id:response.data.foundUser._id, wishlistData: wishlistResponse.data.wishlist, cartData: cartResponse.data.cart, addressData: addressResponse.data.userAddress}})
             }
             
             else if(wishlistResponse.status === 404 || cartResponse.status === 404){
@@ -73,7 +76,7 @@ const AuthProvider = ({children}) => {
         }
     }
 
-    const testLogin = async() => {     
+    const testLogin = async() => {    
         try{
             const response = await axios.post("api/auth/login", {
                 email: "testlogin@gmail.com",
@@ -87,10 +90,36 @@ const AuthProvider = ({children}) => {
                     authorization: localStorage.getItem("token")
                 }
             }
-        
+
+            const defaultAddress = {
+                name: "JohnDoe",
+                street:
+                "#Flat 003, 1st Floor, Jayanagar",
+                city: "Bangalore",
+                state: "Karnataka",
+                country: "India",
+                zipCode: 560011,
+                mobile: 9876543210,
+            }
+ 
             const wishlistResponse = await axios.get("/api/user/wishlist",config)
             const cartResponse = await axios.get("/api/user/cart", config)
-
+            const getAddress =await axios.get(
+                "/api/user/address",
+                config
+                )
+            
+            if(getAddress.data.address.length === 0){
+                const addressResponse = await axios.post(
+                    "/api/user/address",
+                    {address: defaultAddress} ,
+                    config
+                    )
+                if(wishlistResponse.status === 200 && cartResponse.status === 200 && addressResponse.status === 201){
+                    authDispatch({type: "TEST_LOGIN", payload: {name:response.data.foundUser.firstName, toastMessage:"Logged in", id:response.data.foundUser._id, wishlistData: wishlistResponse.data.wishlist, cartData: cartResponse.data.cart, addressData: addressResponse.data.userAddress} })
+                }
+            }
+                
             if(wishlistResponse.status === 200 && cartResponse.status === 200){
                 authDispatch({type: "TEST_LOGIN", payload: {name:response.data.foundUser.firstName, toastMessage:"Logged in", id:response.data.foundUser._id, wishlistData: wishlistResponse.data.wishlist, cartData: cartResponse.data.cart} })
             }

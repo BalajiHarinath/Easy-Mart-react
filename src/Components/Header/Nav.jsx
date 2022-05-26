@@ -34,7 +34,10 @@ export const Nav = () => {
                 </div>   
             </div>
 
-            <SearchBar />
+            {["/products", "/search"].includes(location.pathname) ? <SearchBar /> : 
+            <div className="searchbar flex flex-justify-center pd-1-5 flex-grow-1">
+                 <div className= "input-searchbar"></div>
+            </div>}
 
             <ul className="nav-icons flex flex-justify-center flex-gap-2 list-style-none">
                 
@@ -76,9 +79,12 @@ export const Nav = () => {
 
         </nav>
 
-        <div className="searchbar-small-screen">
-            <SearchBar isSmallScreen={{isSmallScreen: true}}/>
-        </div>
+        {
+        ["/products", "/search"].includes(location.pathname) &&
+            <div className="searchbar-small-screen">
+                <SearchBar isSmallScreen={{isSmallScreen: true}}/>
+            </div>
+        }
 
         {showSidebar && <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>}
     

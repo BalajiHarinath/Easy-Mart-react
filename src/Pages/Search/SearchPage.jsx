@@ -13,11 +13,13 @@ export const SearchPage = () => {
     const { products } = useProducts();
     const { productData } = products;
 
-    const searchData = productData.filter(({categoryName, brandName}) => 
+    const searchData = productData.filter(({product, categoryName, brandName}) => 
         categoryName.toLowerCase().includes(searchTerm.toLowerCase())||
         brandName.toLowerCase().includes(searchTerm.toLowerCase())||
+        product.toLowerCase().includes(searchTerm.toLowerCase())||
         searchTerm.toLowerCase().includes(categoryName.toLowerCase())||
-        searchTerm.toLowerCase().includes(brandName.toLowerCase())
+        searchTerm.toLowerCase().includes(brandName.toLowerCase())||
+        searchTerm.toLowerCase().includes(product.toLowerCase())
     )
 
     return(

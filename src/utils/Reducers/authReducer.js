@@ -8,7 +8,7 @@ export const authReducer = (state, { type, payload }) => {
             return{...state, toastData: {...state.toastData, display: false}}
         
         case "TEST_LOGIN":
-            return{...state, toastData: {...state.toastData, status:"added", display: true, data: payload.toastMessage}, loggedIn: true, testLogin: true, userName: payload.name, userId: payload.id, wishlist: [...payload.wishlistData], cart: [...payload.cartData]} 
+            return{...state, toastData: {...state.toastData, status:"added", display: true, data: payload.toastMessage}, loggedIn: true, testLogin: true, userName: payload.name, userId: payload.id, wishlist: [...payload.wishlistData], cart: [...payload.cartData], addressData: payload.addressData} 
 
         case "LOGIN_ERROR":
             return{...state, toastData: {...state.toastData, status:"removed", display: true, data: payload.toastMessage}}
@@ -33,6 +33,19 @@ export const authReducer = (state, { type, payload }) => {
 
         case "UPDATE_CART":
             return{...state, toastData: {...state.toastData, status:"added", display:true, data: payload.toastMessage}, cart: payload.data}
+
+        //address
+        case "GET_ADDRESS":
+            return{...state, addressData: payload.data}
+
+        case "ADD_ADDRESS":
+            return{...state, toastData: {...state.toastData, status:"added", display:true, data: payload.toastMessage}, addressData: payload.data}
+
+        case "UPDATE_ADDRESS":
+                return{...state, toastData: {...state.toastData, status:"added", display:true, data: payload.toastMessage}, addressData: payload.data}
+
+        case "REMOVE_ADDRESS":
+            return{...state, toastData: {...state.toastData, status:"removed", display:true, data: payload.toastMessage}, addressData: payload.data}
 
         case "HANDLER_FAIL":
             return{...state, toastData: {...state.toastData, status:"removed", display:true, data: payload.toastMessage}}

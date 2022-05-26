@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 // import reportWebVitals from './reportWebVitals';
 
 import { makeServer } from "./server";
-import { AuthProvider, ProductProvider, WishlistProvider, CartProvider } from "./Context";
+import { AuthProvider, ProductProvider, WishlistProvider, CartProvider, AddressProvider } from "./Context";
 
 // Call make Server
 makeServer();
@@ -15,13 +15,15 @@ ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <Router>
-        <ProductProvider>
-          <CartProvider>  
-            <WishlistProvider>
-              <App />
-            </WishlistProvider>  
-          </CartProvider>   
-        </ProductProvider>   
+        <AddressProvider>
+          <ProductProvider>
+            <CartProvider>  
+              <WishlistProvider>
+                <App />
+              </WishlistProvider>  
+            </CartProvider>   
+          </ProductProvider> 
+        </AddressProvider>
       </Router> 
     </AuthProvider>
   </React.StrictMode>,

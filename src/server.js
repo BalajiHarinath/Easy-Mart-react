@@ -1,8 +1,15 @@
 import { Server, Model, RestSerializer } from "miragejs";
+import { v4 as uuid } from "uuid";
 import {
   loginHandler,
   signupHandler,
 } from "./backend/controllers/AuthController";
+import {
+  getAddressHandler,
+  addAddressHandler,
+  removeAddressHandler,
+  updateAddressHandler,
+} from "./backend/controllers/AddressController";
 import {
   addItemToCartHandler,
   getCartItemsHandler,
@@ -54,7 +61,7 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [] })
+        server.create("user", { ...item, cart: [], wishlist: [], address: []})
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
@@ -94,6 +101,12 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/wishlist/:productId",
         removeItemFromWishlistHandler.bind(this)
       );
+
+       // address routes (private)
+       this.get("/user/address", getAddressHandler.bind(this));
+       this.post("/user/address", addAddressHandler.bind(this));
+       this.post("/user/address/:addressId", updateAddressHandler.bind(this));
+       this.delete("/user/address/:addressId", removeAddressHandler.bind(this));
     },
   });
 }

@@ -1,10 +1,12 @@
 import "../../css/main.css";
 import "./Cart.css";
 import { useState, useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
 import { useAuth, useCart } from "../../Context";
 import { getTotalMRP, getDiscountAmount, getTotalAmount, getCartQuantity } from ".";
 
-export const CartDetails = () => {
+export const CartDetails = ({isAddressSelected}) => {
+    const location = useLocation();
     const { authState: { cart }} = useAuth();
     const { removeFromCart, updateItemQuantity } = useCart();
     let deliveryFee = 200
@@ -45,13 +47,16 @@ export const CartDetails = () => {
 
     return(
         <div className="cart-price-details m-2 pdl-2">
-            <div className="pdb-2">
-                <h5 className="font-semibold pdb-1">COUPONS</h5>
-                <button className="cart-coupon btn-transparent" onClick={() => setDisplayCoupon({...displayCoupon, status:!displayCoupon.status})}>
-                    <i className="fa fa-tag" aria-hidden="true"></i>
-                    Apply Coupon
+            {
+            location.pathname === "/cart" && 
+                <div className="pdb-2">
+                    <h5 className="font-semibold pdb-1">COUPONS</h5>
+                    <button className="cart-coupon btn-transparent" onClick={() => setDisplayCoupon({...displayCoupon, status:!displayCoupon.status})}>
+                        <i className="fa fa-tag" aria-hidden="true"></i>
+                        Apply Coupon
                     </button>
-            </div>
+                </div>
+            }
 
             <div className={`${displayCoupon.status ? "modal-container-offer" : "display-none"}`}>
                 <div className="modal">
@@ -84,8 +89,8 @@ export const CartDetails = () => {
                 </div>
             </div>
 
-            <div>
-                <h5 className="font-semibold pdb-1">PRICE DETAILS : ({cartQuantity} items)</h5>
+            <div className={`${location.pathname === "/checkout" ? "pdt-2" : ""}`}>
+                <h5 className="font-semibold pdb-1">{`${location.pathname === "/cart" ? "PRICE DETAILS" : "CHECKOUT"}`} : ({cartQuantity} {`${cartQuantity === 1 ? "item" : "items"}`})</h5>
                 <div className="flex pdb-1">
                     <p className="flex-grow-1 text-base">Total MRP</p>
                     <span>Rs. {totalMRP}/-</span>
@@ -102,7 +107,8 @@ export const CartDetails = () => {
                     <p className="flex-grow-1 text-base font-semibold">Total Amount</p>
                     <span className="font-semibold">Rs. {totalAmount}/-</span>
                 </div>
-                <button className="cart-article-place-order btn-solid btn-small font-semibold">Place Order</button>
+                {location.pathname === "/cart" && <Link to="/checkout"><button className="cart-article-place-order btn-solid btn-small font-semibold">Checkout</button></Link>}
+                {location.pathname === "/checkout" && <button className={`${!isAddressSelected ? "poniter-events-none": ""} cart-article-place-order btn-solid btn-small font-semibold`}>Place Order</button>}
             </div>
         </div>
     )
