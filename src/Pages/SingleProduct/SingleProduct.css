@@ -25,6 +25,7 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 1.5rem;
+    padding-left: 0.5rem;
     text-align: left;
   }
 
@@ -104,7 +105,7 @@
     }
   }
   
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 540px) {
     .container-single-product-page {
       margin: 2rem;
       display: grid;

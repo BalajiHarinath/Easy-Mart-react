@@ -42,7 +42,7 @@ export const Nav = () => {
             <ul className="nav-icons flex flex-justify-center flex-gap-2 list-style-none">
                 
                 <li className="flex flex-column flex-justify-center flex-align-center">
-                    <Link className="flex flex-column" to="/login">
+                    <Link className="flex flex-column" to={`${["/login", "/signup"].includes(location.pathname) ? "/login" : "/profile"}`}>
                         <span className={`${["/login", "/signup"].includes(location.pathname) && "selected"} material-icons text-2xl nav-links nav-profile`}>account_circle</span>
                     </Link>
                     <span className="text-xs text-capitalize">{userName}</span>

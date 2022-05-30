@@ -4,11 +4,12 @@ import { useState } from "react";
 import { useAddress } from "../../Context";
 import { EditAddressModal } from "./EditAddressModal";
 
-export const AddressCard = ({address, setIsAddressSelected}) => {
+export const AddressCard = ({address, setIsAddressSelected, setSelectedAddress}) => {
     const { removeAddress } = useAddress();
     const [showEditAddressModal, setShowEditAddressModal] = useState(false);
     const clickHandler = () => {
-        setIsAddressSelected(true)
+        setSelectedAddress(address);
+        setIsAddressSelected(true);
     }
 
     return(

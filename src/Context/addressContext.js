@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useAuth } from "./authenticationContext";
 
@@ -6,6 +6,7 @@ const AddressContext = createContext();
 
 const AddressProvider = ({children}) => {
     const { authDispatch } = useAuth();
+    const [isAddressLoading, setIsAddressLoading] = useState(false);
     
     const config = {
         headers: {
@@ -15,20 +16,24 @@ const AddressProvider = ({children}) => {
 
     const getAddress = async() => {
         try{
+            setIsAddressLoading(true)
             const response  = await axios.get(
                 "/api/user/address",
                 config
                 )
             if(response.status === 200){
                 authDispatch({type: "GET_ADDRESS", payload: { data: response.data.address }})
+                setIsAddressLoading(false)
             }
             else if(response.status === 404){
                 authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"The email is not Registered" } })
+                setIsAddressLoading(false)
             } 
 
         }catch(error){
             console.error(error)
             authDispatch({type: "HANDLER_FAIL", payload: { toastMessage: "Address could not be fetched" }})
+            setIsAddressLoading(false)
         }      
     }
 
@@ -47,6 +52,7 @@ const AddressProvider = ({children}) => {
             } 
 
         }catch(error){
+            console.log(error)
             console.error(error)
             authDispatch({type: "HANDLER_FAIL", payload: { toastMessage: "Address could not be added" }})
         }      
@@ -93,7 +99,7 @@ const AddressProvider = ({children}) => {
     }
     
     return(
-        <AddressContext.Provider value={{getAddress, editAddress, addAddress, removeAddress}}>
+        <AddressContext.Provider value={{getAddress, editAddress, addAddress, removeAddress, isAddressLoading}}>
             {children}
         </AddressContext.Provider>
     )

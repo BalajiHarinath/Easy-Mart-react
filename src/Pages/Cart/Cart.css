@@ -98,8 +98,17 @@
     width: inherit;
 }
 
-.poniter-events-none {
+.pointer-events-none {
     pointer-events: none;
+}
+
+.btn-disable {
+    background-color: var(--border-color1);
+    pointer-events: none;
+}
+
+.alert-msg {
+    color: var(--red);
 }
 
 /*Media-Queries*/

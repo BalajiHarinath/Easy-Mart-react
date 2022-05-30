@@ -9,3 +9,5 @@ export { Error } from "./Error/Error";
 export { SearchPage } from "./Search/SearchPage";
 export { SingleProduct } from "./SingleProduct/SingleProduct";
 export { Checkout } from "./Checkout/Checkout";
+export { OrderSummary } from "./OrderSummary/OrderSummary";
+export { Profile } from "./Profile/Profile";

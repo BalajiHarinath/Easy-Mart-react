@@ -3,10 +3,11 @@ import "./SearchPage.css";
 import { useLocation } from "react-router-dom";
 import { useProducts } from "../../Context";
 import { ProductItemCard } from "../Products";
-
+import { useScrollToTop, useDocumentTitle } from "../../utils";
 
 export const SearchPage = () => {
-
+    useScrollToTop();
+    useDocumentTitle("Product-Search");
     const query = new URLSearchParams(useLocation().search); //?searchTerm=${encodeURIComponent(searchTerm)}
     const searchTerm = query.get('searchTerm') //{encodeURIComponent(searchTerm)}
 

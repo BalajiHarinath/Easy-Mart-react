@@ -6,7 +6,7 @@ import { useAuth } from "../../Context";
 import { useDocumentTitle } from "../../utils";
 
 export const SignUp = () => {
-    useDocumentTitle();
+    useDocumentTitle("Signup");
     const { authState, signup } = useAuth();
 
     const [userDetails, setUserDetails] = useState({

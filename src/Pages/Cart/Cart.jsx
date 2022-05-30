@@ -8,7 +8,7 @@ import { useScrollToTop, useDocumentTitle } from "../../utils";
 
 export const Cart = () => {
     useScrollToTop();
-    useDocumentTitle();
+    useDocumentTitle("Cart");
     const { authState: {cart} } = useAuth();
     return(
         <main className="main-cart grid-2-column">       

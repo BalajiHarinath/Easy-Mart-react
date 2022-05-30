@@ -1,13 +1,14 @@
 import "./App.css";
 import "./css/main.css";
 
-import { Route, Routes} from 'react-router-dom';
+import { Route, Routes, useLocation} from 'react-router-dom';
 import { Nav, Toast, Footer, RestrictAuth, RequireAuth } from "./Components";
-import  { Home,  MockmanAPI, Products, SignUp, Login, Wishlist, Cart, Error, SearchPage, SingleProduct, Checkout } from "./Pages";
+import  { Home,  MockmanAPI, Products, SignUp, Login, Wishlist, Cart, Error, SearchPage, SingleProduct, Checkout, OrderSummary, Profile } from "./Pages";
 import { CategoryProvider, BrandProvider } from "./Context";
 import MockAPI from "./Components/Mockman/mockman";
 
 function App() {
+  const location = useLocation();
 
   return (
     <div className="App">
@@ -46,12 +47,14 @@ function App() {
             <Route path="/wishlist" element={<Wishlist />}/>
             <Route path="/cart" element={<Cart />}/>
             <Route path="/checkout" element={<Checkout />} />
-            
+            <Route path="/summary" element={<OrderSummary />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
+
           <Route path="*" element={<Error />} />
           <Route path="/mockman" element={<MockmanAPI />} />
         </Routes>    
-      <Footer />  
+      {location.pathname !== "/summary" && <Footer />}
     </div>
    
   );
