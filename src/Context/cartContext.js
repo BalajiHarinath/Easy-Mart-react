@@ -96,9 +96,6 @@ const CartProvider = ({children}) => {
                 if(response.status === 200){
                     authDispatch({type: "CLEAR_CART", payload:{data: response.data.cart}})
                 }
-                // else if(response.status === 404){
-                //     authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"The email is not Registered" } })
-                // } 
     
             }catch(error){
                 console.log(error)

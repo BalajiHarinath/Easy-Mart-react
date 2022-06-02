@@ -23,8 +23,7 @@ export const CartItemCard = ({item}) => {
                     flag = true;
                 },delay)
             }
-        }
-        
+        }  
     }
 
     const throttlingFunction = throttle(decreaseQuantity, 2000)

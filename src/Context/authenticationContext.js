@@ -32,16 +32,6 @@ const AuthProvider = ({children}) => {
 
     const signup = async(userDetails) => {
         try{
-            // const defaultAddress = {
-            //     name: "JohnDoe",
-            //     street:
-            //     "#Flat 003, 1st Floor, Jayanagar",
-            //     city: "Bangalore",
-            //     state: "Karnataka",
-            //     country: "India",
-            //     zipCode: 560011,
-            //     mobile: 9876543210,
-            // }
             setIsLoading(true)
             const response = await axios.post("/api/auth/signup", {
                 firstName: userDetails.firstName,
@@ -53,42 +43,7 @@ const AuthProvider = ({children}) => {
             if(response.status === 201){
                 authDispatch({type: "SUCCESS_TOAST", payload: {name:response.data.createdUser.firstName, toastMessage:"Signed up", id:response.data.createdUser._id, email: response.data.createdUser.email, wishlistData:[], cartData:[] }})
                 setIsLoading(false)
-            }   
-
-            // const config = {
-            //     headers:{
-            //         authorization: localStorage.getItem("token")
-            //     }
-            // }
-
-            // const defaultAddress = {
-            //     name: "JohnDoe",
-            //     street:
-            //     "#Flat 003, 1st Floor, Jayanagar",
-            //     city: "Bangalore",
-            //     state: "Karnataka",
-            //     country: "India",
-            //     zipCode: 560011,
-            //     mobile: 9876543210,
-            // }
-
-            // const getAddress =await axios.get(
-            //     "/api/user/address",
-            //     config
-            //     )
-            
-            // if(getAddress.data.address.length === 0){
-            //     const addressResponse = await axios.post(
-            //         "/api/user/address",
-            //         {address: defaultAddress} ,
-            //         config
-            //         )
-            //     if(addressResponse.status === 201 && response.status === 201){
-            //         authDispatch({type: "SUCCESS_TOAST", payload: {name:response.data.createdUser.firstName, toastMessage:"Signed up", id:response.data.foundUser._id, email: response.data.createdUser.email, wishlistData: [], cartData: [], addressData: addressResponse.data.userAddress} })
-            //         setIsLoading(false)
-            //     }
-            // }
-                
+            }                  
         }catch(error){
             authDispatch({type: "LOGIN_ERROR", payload: {toastMessage: "Email already exists"}})
             setIsLoading(false)
@@ -222,11 +177,7 @@ const AuthProvider = ({children}) => {
         localStorage.clear();
         authDispatch({type: "LOGOUT", payload: { toastMessage: "Logged out", id: ""}})
     }
-
-    // const clearCart = () => {
-    //     authState.cart = []
-    // }
-
+    
     return(
         <AuthContext.Provider value={{authState, authDispatch, signup, login, testLogin, logout, isloading}}>
             {children}

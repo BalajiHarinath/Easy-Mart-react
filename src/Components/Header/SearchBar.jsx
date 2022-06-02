@@ -26,7 +26,6 @@ export const SearchBar = ({isSmallScreen}) => {
     },[])
 
     const searchOptionClickHandler = (item) => {
-        // console.log(item)
         if(searchTerm!==""){
             navigate(`/search?searchTerm=${encodeURIComponent(item)}`);
             setSearchTerm("");
