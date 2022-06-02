@@ -9,7 +9,7 @@ import { useScrollToTop, useDocumentTitle } from "../../utils";
 
 export const Home = () => {
     useScrollToTop();
-    useDocumentTitle();
+    useDocumentTitle("Home");
     const { categoryStatus, categoryData } = useCategory();
     const { brandStatus, brandData } = useBrand();
     const { products } = useProducts();

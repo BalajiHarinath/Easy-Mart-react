@@ -7,7 +7,7 @@ import { useScrollToTop, useDocumentTitle } from "../../utils";
 
 export const Products = () => {
     useScrollToTop();
-    useDocumentTitle();
+    useDocumentTitle("Products");
     const [showFilterSmallScreen, setShowFilterSmallScreen] = useState(false);
     const { products } = useProducts();
     const { productStatus, productData, sortBy, filterData} = products;

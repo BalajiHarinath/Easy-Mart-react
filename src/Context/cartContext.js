@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useAuth } from "./authenticationContext";
 
@@ -8,6 +8,13 @@ const CartContext = createContext();
 const CartProvider = ({children}) => {
 
     const { authDispatch } = useAuth();
+    const [cartPriceDetails, setCartPriceDetails] = useState({
+        mrp: "",
+        finalDiscount: "",
+        deliveryCharge: "",
+        finalAmount: "",
+    })
+    const [orderDetails, setOrderDetails] = useState({});
 
     const config = {
         headers: {
@@ -79,8 +86,27 @@ const CartProvider = ({children}) => {
         }
     }
 
+    const clearCart = async(cartItems) => {
+        console.log(cartItems)
+        for(let cartItem of cartItems){
+            try{
+                const response = await axios.delete(
+                    `/api/user/cart/${cartItem._id}`, config
+                )
+                if(response.status === 200){
+                    authDispatch({type: "CLEAR_CART", payload:{data: response.data.cart}})
+                }
+    
+            }catch(error){
+                console.log(error)
+                authDispatch({type: "HANDLER_FAIL", payload: { toastMessage:"Remove from cart failed" } })
+            }
+        }
+        
+    }
+
     return(
-        <CartContext.Provider value={{addToCart, removeFromCart, updateItemQuantity}}>
+        <CartContext.Provider value={{addToCart, removeFromCart, updateItemQuantity, cartPriceDetails, setCartPriceDetails, orderDetails, setOrderDetails, clearCart}}>
             {children}
         </CartContext.Provider>
     )

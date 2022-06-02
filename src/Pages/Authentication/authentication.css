@@ -2,6 +2,7 @@
 
 .main-sign-up, .main-login {
     margin-top: calc(4.375rem + 4rem);
+    height: 80vh;
 }
 
 .form-sign-up, .form-login {

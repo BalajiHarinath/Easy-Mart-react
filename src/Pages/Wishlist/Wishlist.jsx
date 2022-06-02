@@ -8,7 +8,7 @@ import { useScrollToTop, useDocumentTitle } from "../../utils";
 
 export const Wishlist = () => {
     useScrollToTop();
-    useDocumentTitle();
+    useDocumentTitle("Wishlist");
     const { authState: {wishlist} } = useAuth();
     return(  
         <main className="main-wishlist">

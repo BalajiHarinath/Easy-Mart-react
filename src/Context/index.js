@@ -4,3 +4,4 @@ export { ProductProvider, useProducts } from "./ProductsContext";
 export { AuthProvider, useAuth } from "./authenticationContext";
 export { WishlistProvider, useWishlist } from "./wishlistContext";
 export { CartProvider, useCart } from "./cartContext";
+export { AddressProvider, useAddress} from "./addressContext";

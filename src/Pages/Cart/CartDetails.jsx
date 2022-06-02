@@ -1,12 +1,14 @@
 import "../../css/main.css";
 import "./Cart.css";
 import { useState, useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
 import { useAuth, useCart } from "../../Context";
 import { getTotalMRP, getDiscountAmount, getTotalAmount, getCartQuantity } from ".";
 
-export const CartDetails = () => {
+export const CartDetails = ({isAddressSelected, addressData, showRazorpay}) => {
+    const location = useLocation();
     const { authState: { cart }} = useAuth();
-    const { removeFromCart, updateItemQuantity } = useCart();
+    const { removeFromCart, updateItemQuantity, cartPriceDetails, setCartPriceDetails, orderDetails } = useCart();
     let deliveryFee = 200
 
     if(cart.length===0) {
@@ -16,7 +18,7 @@ export const CartDetails = () => {
     const [displayCoupon, setDisplayCoupon] = useState({status: false, value: null});
     const [totalAmount, setTotalAmount] = useState(0);
     const [isEligibleForCoupon, setIsEligibleForCoupon] = useState(true);
-    const [isOfferEncashed, setIsOfferEncashed] = useState(false)
+    const [isOfferEncashed, setIsOfferEncashed] = useState(false);
 
     useEffect(() => {     
         setTotalAmount(getTotalAmount(cart, deliveryFee));      
@@ -42,16 +44,29 @@ export const CartDetails = () => {
             
         setDisplayCoupon({...displayCoupon, status:!displayCoupon.status})
     }
+    
+
+    const placeOrderClickHandler = () => {
+        setCartPriceDetails({
+             mrp: totalMRP,
+             finalDiscount: discount,
+             deliveryCharge: deliveryFee,
+             finalAmount: totalAmount,
+        })
+    }
 
     return(
         <div className="cart-price-details m-2 pdl-2">
-            <div className="pdb-2">
-                <h5 className="font-semibold pdb-1">COUPONS</h5>
-                <button className="cart-coupon btn-transparent" onClick={() => setDisplayCoupon({...displayCoupon, status:!displayCoupon.status})}>
-                    <i className="fa fa-tag" aria-hidden="true"></i>
-                    Apply Coupon
+            {
+            location.pathname === "/cart" && 
+                <div className="pdb-2">
+                    <h5 className="font-semibold pdb-1">COUPONS</h5>
+                    <button className="cart-coupon btn-transparent" onClick={() => setDisplayCoupon({...displayCoupon, status:!displayCoupon.status})}>
+                        <i className="fa fa-tag" aria-hidden="true"></i>
+                        Apply Coupon
                     </button>
-            </div>
+                </div>
+            }
 
             <div className={`${displayCoupon.status ? "modal-container-offer" : "display-none"}`}>
                 <div className="modal">
@@ -78,14 +93,14 @@ export const CartDetails = () => {
                     </div>
 
                     <div className="modal-btn-container">
-                        <button className={`${isOfferEncashed ? "btn-solid btn-small modal-btn poniter-events-none" : "btn-solid btn-small modal-btn"}`} onClick={couponApplyHandler}>{`${isEligibleForCoupon ?  isOfferEncashed ? "Offer Encashed" : "Apply" : "Not Eligible"}`}</button>
+                        <button className={`${isOfferEncashed ? "btn-solid btn-small modal-btn pointer-events-none" : "btn-solid btn-small modal-btn"}`} onClick={couponApplyHandler}>{`${isEligibleForCoupon ?  isOfferEncashed ? "Offer Encashed" : "Apply" : "Not Eligible"}`}</button>
                     </div>
                     <button className="modal-close-btn" onClick={() => setDisplayCoupon({...displayCoupon, status:!displayCoupon.status})}><i className="fa fa-times" aria-hidden="true"></i></button>
                 </div>
             </div>
 
-            <div>
-                <h5 className="font-semibold pdb-1">PRICE DETAILS : ({cartQuantity} items)</h5>
+            <div className={`${location.pathname === "/checkout" ? "pdt-2" : ""}`}>
+                <h5 className="font-semibold pdb-1">{`${location.pathname === "/cart" ? "PRICE DETAILS" : "CHECKOUT"}`} : ({cartQuantity} {`${cartQuantity === 1 ? "item" : "items"}`})</h5>
                 <div className="flex pdb-1">
                     <p className="flex-grow-1 text-base">Total MRP</p>
                     <span>Rs. {totalMRP}/-</span>
@@ -96,13 +111,22 @@ export const CartDetails = () => {
                 </div>
                 <div className="flex pdb-1">
                     <p className="flex-grow-1 text-base">Delivery Charge</p>
-                    <span>Rs. {deliveryFee}/-</span>
+                    <span>{`Rs. ${ cartQuantity === 0 ? 0 : deliveryFee}/-`}</span>
                 </div>
                 <div className="flex pdb-1">
                     <p className="flex-grow-1 text-base font-semibold">Total Amount</p>
-                    <span className="font-semibold">Rs. {totalAmount}/-</span>
+                    {location.pathname === "/cart" && <span className="font-semibold">{`Rs. ${ cartQuantity === 0 ? 0 : totalAmount}/-`}</span>}
+                    {location.pathname === "/checkout" && <span className="font-semibold">Rs. {cartPriceDetails.finalAmount}/-</span>}
+                    {/* {location.pathname === "/summary" && <span className="font-semibold">Rs. {orderDetails.totalAmount}/-</span>} */}
                 </div>
-                <button className="cart-article-place-order btn-solid btn-small font-semibold">Place Order</button>
+                {location.pathname === "/cart" && <Link to="/checkout"><button onClick={() => placeOrderClickHandler()} className={`${cartQuantity === 0 ? "btn-disable": ""} cart-article-place-order btn-solid btn-small font-semibold`}>Checkout</button></Link>}
+                {location.pathname === "/checkout" && 
+                    <>
+                        <button className={`${(!isAddressSelected || addressData.length === 0) ? "btn-disable": ""} cart-article-place-order btn-solid btn-small font-semibold`}
+                            onClick={() => showRazorpay()}>Place Order</button>
+                        {(!isAddressSelected || addressData.length === 0) && <div className="alert-msg pdt-0-5">Select a delivery address!!!</div>}
+                    </> 
+                }
             </div>
         </div>
     )

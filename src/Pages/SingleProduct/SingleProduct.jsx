@@ -4,10 +4,11 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useWishlist, useProducts, useCart, useAuth } from "../../Context";
 import { useScrollToTop, useDocumentTitle } from "../../utils";
+import { Loader } from "../../Components";
 
 export const SingleProduct = () => {
     useScrollToTop();
-    useDocumentTitle();
+    useDocumentTitle("Product");
 
     const { products, getSingleProduct } = useProducts();
     const { productStatus, singleProductData } = products;
@@ -22,7 +23,7 @@ export const SingleProduct = () => {
 
     return(
         <main className="main-singleproduct flex flex-justify-center"> 
-            { productStatus==="loading" && <div className="loading font-semibold text-2xl">Loading...</div> }  
+            { productStatus==="loading" && <Loader/> }  
             { productStatus==="success" &&
                 <section className="container-single-product-page">
                     <img
@@ -42,12 +43,12 @@ export const SingleProduct = () => {
                         <span className="cart-article-discount text-sm font-semibold">
                             10% off
                         </span>
-                        <div className="card-rating-stars">
+                        <div className="card-rating-stars flex align-items-center">
                             {Array.apply(null, {length: singleProductData?.rating}).map((e,i) => (<span className="material-icons text-lg" key={i}>star</span>)) }
                             <span className="text-sm">({singleProductData?.numberOfReviews})</span>
                         </div>
 
-                        <p className="text-align-left pdb-1">
+                        <p className="text-align-left pdb-1 text-base">
                             {singleProductData?.description}
                         </p>
                         <div className="product-status">

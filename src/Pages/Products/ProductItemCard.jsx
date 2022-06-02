@@ -9,6 +9,43 @@ export const ProductItemCard = ({item}) => {
     const { addToCart } = useCart();
     const { authState: { wishlist, cart, loggedIn } } = useAuth();
 
+    const addItemToCart = () => {
+        addToCart(item, "Added to cart")
+    }
+
+    const addItemToWishList = () => {
+        addToWishlist(item, "Added to wishlist")
+    }
+
+    const throttleCartItem = (fn, delay) => {
+        let flag = true;
+        return function(){
+            if(flag){
+                fn();
+                flag = false;
+                setTimeout(() => {
+                    flag = true;
+                }, delay)
+            }
+        }
+    }
+
+    const throttleWishlistItem = (fn, delay) => {
+        let flag = true;
+        return function(){
+            if(flag){
+                fn();
+                flag = false;
+                setTimeout(() => {
+                    flag = true;
+                }, delay)
+            }
+        }
+    }
+
+    const addItemToCartthrottleFunction = throttleCartItem(addItemToCart, 1500);
+    const addItemToWishlistthrottleFunction = throttleWishlistItem(addItemToWishList, 1500)
+
     return(
         <div className={`${ outOfStock ? "card-product-outofstock card-product" : "card-product"} flex flex-column mb-4 mr-2`}>
             <Link className="container-img-product" to={`/singleproduct/${_id}`}>
@@ -55,7 +92,7 @@ export const ProductItemCard = ({item}) => {
                                             <span className="material-icons text-lg pdr-0-5">shopping_cart</span>Go to Cart</Link>
                                         :
                                             <button className="btn-product-cart text-base flex flex-justify-center"
-                                                onClick={() => {addToCart(item, "Added to cart")}}>
+                                                onClick={addItemToCartthrottleFunction}>
                                             <span className="material-icons text-lg pdr-0-5">shopping_cart</span>Add to Cart</button>
 
                                 }   
@@ -67,13 +104,11 @@ export const ProductItemCard = ({item}) => {
                                                 Go to Wishlist</Link> 
                                         :
                                             <button className="btn-product-wishlist text-base"
-                                            onClick={()=>addToWishlist(item, "Added to wishlist")}>
+                                            onClick={addItemToWishlistthrottleFunction}>
                                                 Add to Wishlist</button>
                                 }                   
                             </>
-
-                    }
-                    
+                    }            
                 </div>
             </div>
         </div>
